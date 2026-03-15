@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mosaic Mind — Neurodivergence Self-Discovery</title>
+<meta name="description" content="A free, science-based self-assessment covering autism, ADHD, dyslexia, dyscalculia, dyspraxia, sensory sensitivity, and executive function. 73 questions for adults.">
+<meta property="og:title" content="Mosaic Mind — Neurodivergence Self-Discovery">
+<meta property="og:description" content="A gentle, comprehensive starting point for understanding your own mind. Covers 7 areas of neurodivergence in a single flow. Free and science-based.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mosaic Mind — Neurodivergence Self-Discovery">
+<meta name="twitter:description" content="Free, science-based self-assessment for autism, ADHD, dyslexia, dyscalculia, dyspraxia, sensory sensitivity and executive function.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Lexend:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#FFF8F0;--peach:#FFE8D6;--sage:#B7C9A8;--deep-sage:#7A9B68;
+  --terra:#C4704B;--soft-terra:#D4956A;--forest:#2D4A3E;--brown:#5C4033;
+  --lav:#C9B8D9;--gold:#C9A96E;--lt-sage:#E8F0E3;
+  --txt:#3A3028;--txt2:#6B5D52;--txt3:#8E7F73;
+  --card:rgba(255,255,255,0.75);--border:rgba(183,201,168,0.3);
+  --shd:0 4px 24px rgba(93,64,55,0.06);--shd2:0 8px 32px rgba(93,64,55,0.10);
+  --r:16px;--rs:10px;--rl:24px;
+}
+[data-theme="dark"]{
+  --cream:#1a1a1a;--peach:#2a2420;--sage:#4a5e42;--deep-sage:#6a9058;
+  --forest:#a8c8a0;--brown:#c8a888;--lt-sage:#252e22;
+  --txt:#e8e0d8;--txt2:#b8a898;--txt3:#887868;
+  --card:rgba(40,38,35,0.85);--border:rgba(100,120,90,0.25);
+  --shd:0 4px 24px rgba(0,0,0,0.2);--shd2:0 8px 32px rgba(0,0,0,0.3);
+}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--txt);line-height:1.65;min-height:100vh;overflow-x:hidden;transition:background 0.4s,color 0.4s}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 15% 20%,rgba(183,201,168,0.2) 0%,transparent 50%),radial-gradient(ellipse at 85% 80%,rgba(201,184,217,0.15) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(255,232,214,0.2) 0%,transparent 60%)}
+[data-theme="dark"] body::before{opacity:0.3}
+.app{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:24px 20px 80px}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;line-height:1.25}
+h1{font-size:clamp(2rem,5vw,2.8rem);color:var(--forest)}
+h2{font-size:clamp(1.4rem,3.5vw,1.85rem);color:var(--forest)}
+h3{font-size:1.15rem;color:var(--brown);font-weight:600}
+p{color:var(--txt2);font-size:1.02rem}
+
+@keyframes slideIn{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes optPulse{0%{transform:scale(1)}40%{transform:scale(1.015)}100%{transform:scale(1)}}
+@keyframes gentleBreathe{0%,100%{opacity:0.6}50%{opacity:1}}
+
+.card{background:var(--card);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:var(--rl);padding:32px;box-shadow:var(--shd);transition:box-shadow 0.3s,background 0.4s}
+
+.brand{text-align:center;padding:40px 0 16px}
+.brand-icon{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--sage),var(--lav));margin-bottom:14px;font-size:32px;color:white;text-shadow:0 1px 3px rgba(0,0,0,0.15)}
+.brand h1 span{display:block;font-size:0.42em;font-family:'DM Sans',sans-serif;font-weight:400;color:var(--txt3);letter-spacing:0.08em;text-transform:uppercase;margin-top:6px}
+
+.welcome-text{text-align:center;max-width:620px;margin:0 auto 28px}
+.welcome-text p{font-size:1.06rem;line-height:1.75}
+.hl{color:var(--deep-sage);font-weight:500}
+
+.disc-box{background:linear-gradient(135deg,var(--lt-sage),rgba(201,184,217,0.1));border-radius:var(--r);padding:20px 24px;margin-bottom:24px;border-left:4px solid var(--sage)}
+.disc-box p{font-size:0.91rem;color:var(--txt2);line-height:1.6}
+.disc-box strong{color:var(--forest)}
+
+/* Recognition quotes */
+.recog-quotes{max-width:560px;margin:0 auto 28px;text-align:center}
+.recog-q{font-family:'Fraunces',serif;font-style:italic;font-size:0.95rem;color:var(--txt3);line-height:1.6;padding:8px 0;opacity:0;animation:fadeUp 0.6s ease-out forwards}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 32px;border-radius:50px;border:none;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;cursor:pointer;transition:all 0.3s}
+.btn-p{background:linear-gradient(135deg,var(--deep-sage),var(--forest));color:white;box-shadow:0 4px 16px rgba(45,74,62,0.25)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(45,74,62,0.3)}
+.btn-p:disabled{opacity:0.4;cursor:not-allowed;transform:none}
+.btn-s{background:var(--card);color:var(--forest);border:1.5px solid var(--sage)}
+.btn-s:hover{background:var(--lt-sage)}
+.btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+
+/* Progress */
+.prog-wrap{margin-bottom:28px}
+.prog-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.prog-top span{font-size:0.85rem;color:var(--txt3);font-weight:500}
+.prog-top .sec-label{color:var(--deep-sage);font-weight:600}
+.prog-bar{height:6px;background:var(--peach);border-radius:3px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--sage),var(--deep-sage));border-radius:3px;transition:width 0.5s ease}
+
+/* Section transition */
+.section-transition{text-align:center;animation:fadeIn 0.5s ease-out;padding:40px 20px}
+.section-transition .st-icon{font-size:40px;margin-bottom:16px}
+.section-transition h2{margin-bottom:12px;font-size:1.4rem}
+.section-transition p{max-width:480px;margin:0 auto;font-size:0.98rem;line-height:1.7}
+.section-transition .st-cta{margin-top:28px}
+
+/* Question card */
+.qc{animation:slideIn 0.35s ease-out}
+.q-num{font-size:0.82rem;color:var(--txt3);margin-bottom:6px;font-weight:500}
+.q-tag{display:inline-block;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.05em;padding:3px 10px;border-radius:20px;margin-bottom:12px;font-weight:600}
+.q-multi-tag{display:inline-block;font-size:0.65rem;padding:2px 8px;border-radius:12px;background:rgba(201,169,110,0.15);color:var(--gold);margin-left:6px;font-weight:500}
+.q-text{font-family:'Fraunces',serif;font-size:1.18rem;color:var(--forest);margin-bottom:22px;line-height:1.5;font-weight:400}
+.opts{display:flex;flex-direction:column;gap:9px}
+.opt{text-align:left;padding:13px 18px;border-radius:var(--rs);border:1.5px solid var(--border);background:var(--card);font-family:'DM Sans',sans-serif;font-size:0.97rem;color:var(--txt);cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:space-between}
+.opt:hover{border-color:var(--sage);background:var(--lt-sage)}
+.opt.sel{border-color:var(--deep-sage);background:var(--lt-sage);font-weight:500;color:var(--forest);animation:optPulse 0.3s ease-out}
+
+/* Resonance bookmark */
+.q-footer{display:flex;justify-content:space-between;align-items:center;margin-top:22px}
+.resonate-btn{display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;border:1.5px solid var(--border);background:transparent;font-family:'DM Sans',sans-serif;font-size:0.82rem;color:var(--txt3);cursor:pointer;transition:all 0.25s;user-select:none}
+.resonate-btn:hover{border-color:var(--soft-terra);color:var(--soft-terra)}
+.resonate-btn.active{border-color:var(--soft-terra);background:rgba(212,149,106,0.1);color:var(--soft-terra);font-weight:500}
+.resonate-btn .heart{transition:transform 0.25s}
+.resonate-btn.active .heart{transform:scale(1.2)}
+.qnav{display:flex;align-items:center;gap:12px}
+.nb{padding:10px 22px;border-radius:50px;border:none;font-family:'DM Sans',sans-serif;font-size:0.92rem;font-weight:500;cursor:pointer;transition:all 0.25s}
+.nb-prev{background:transparent;color:var(--txt3);border:1.5px solid var(--border)}
+.nb-prev:hover{background:var(--card);color:var(--txt)}
+.nb-next{background:var(--deep-sage);color:white}
+.nb-next:hover{background:var(--forest)}
+.nb:disabled{opacity:0.35;cursor:not-allowed}
+.q-hint{font-size:0.82rem;color:var(--txt3)}
+
+/* Results */
+.res-intro{text-align:center;margin-bottom:32px}
+.res-intro p{max-width:580px;margin:0 auto}
+.rcard{margin-bottom:20px;animation:fadeUp 0.4s ease-out both}
+.rh{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.ri{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.rh-text h3{margin-bottom:0}
+.rh-text span{font-size:0.79rem;color:var(--txt3)}
+.domain-desc{background:var(--cream);border:1px solid var(--border);border-radius:var(--rs);padding:14px 18px;margin-bottom:14px;font-size:0.88rem;color:var(--txt2);line-height:1.6}
+.domain-desc .prevalence{display:block;margin-top:6px;font-size:0.82rem;color:var(--txt3);font-style:italic}
+
+.svis{margin:14px 0;position:relative}
+.sb-bg{height:11px;background:var(--peach);border-radius:6px;overflow:visible;position:relative}
+.sb-fill{height:100%;border-radius:6px;transition:width 1s ease}
+.sb-th{position:absolute;top:-5px;width:2px;height:21px;background:var(--terra);opacity:0.5}
+.sb-thl{position:absolute;top:18px;font-size:0.68rem;color:var(--terra);white-space:nowrap;transform:translateX(-50%)}
+.sb-labels{display:flex;justify-content:space-between;margin-top:5px;font-size:0.76rem;color:var(--txt3)}
+.score-big{display:flex;align-items:baseline;gap:8px;margin-top:8px}
+.score-big .num{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:700;color:var(--forest)}
+.score-big .ctx{font-size:0.88rem;color:var(--txt3)}
+
+.interp{border-radius:var(--r);padding:18px 22px;margin:10px 0}
+.interp h4{font-family:'Fraunces',serif;font-weight:600;color:var(--forest);margin-bottom:6px;font-size:0.98rem}
+.interp p,.interp li{font-size:0.92rem;color:var(--txt2);line-height:1.6}
+.interp ul{margin:8px 0;padding-left:18px}
+.interp li{margin-bottom:4px}
+.interp.sum{background:var(--lt-sage)}
+.interp.str{background:linear-gradient(135deg,rgba(183,201,168,0.15),rgba(201,169,110,0.06));border-left:4px solid var(--gold)}
+.interp.act{background:linear-gradient(135deg,rgba(201,184,217,0.1),rgba(255,232,214,0.1));border-left:4px solid var(--lav)}
+
+.lvl{display:inline-block;padding:3px 11px;border-radius:20px;font-size:0.76rem;font-weight:600;letter-spacing:0.03em;margin-left:8px}
+.lvl-a{background:rgba(196,112,75,0.12);color:var(--terra)}
+.lvl-m{background:rgba(201,169,110,0.18);color:#9A7B3C}
+.lvl-l{background:rgba(183,201,168,0.25);color:var(--deep-sage)}
+
+/* Resonance summary in results */
+.resonance-card{background:linear-gradient(135deg,rgba(212,149,106,0.08),rgba(196,112,75,0.05));border-radius:var(--rl);padding:28px;margin:24px 0;border:1px solid rgba(212,149,106,0.15)}
+.resonance-card h3{color:var(--forest);margin-bottom:8px}
+.resonance-card>p{font-size:0.9rem;margin-bottom:14px}
+.resonance-item{padding:10px 0;border-bottom:1px solid var(--border);font-size:0.9rem;color:var(--txt2);display:flex;gap:8px;align-items:flex-start}
+.resonance-item:last-child{border-bottom:none}
+.resonance-item .ri-heart{color:var(--soft-terra);flex-shrink:0;margin-top:2px}
+.resonance-item .ri-section{font-size:0.75rem;color:var(--txt3);display:block;margin-top:2px}
+
+/* Radar */
+.radar-wrap{text-align:center;margin:24px 0 32px;animation:fadeUp 0.5s ease-out}
+.radar-wrap svg{max-width:380px;width:100%}
+
+/* Co-occurrence */
+.cocard{background:linear-gradient(135deg,rgba(201,184,217,0.12),rgba(183,201,168,0.08));border-radius:var(--rl);padding:28px;margin:24px 0;border:1px solid var(--border)}
+.cocard h3{color:var(--forest);margin-bottom:12px}
+.co-item{margin-bottom:14px}
+.co-item h4{font-family:'Fraunces',serif;font-size:0.95rem;color:var(--brown);margin-bottom:4px}
+.co-item p{font-size:0.9rem}
+
+/* Clinician */
+.clinician-card{background:linear-gradient(135deg,rgba(255,232,214,0.3),rgba(183,201,168,0.1));border-radius:var(--rl);padding:28px;margin:24px 0;border:1px solid var(--border)}
+.clinician-card h3{color:var(--forest);margin-bottom:14px}
+.clinician-card p,.clinician-card li{font-size:0.92rem;color:var(--txt2);line-height:1.6}
+.clinician-card ul{padding-left:18px;margin:8px 0}
+.clinician-card li{margin-bottom:5px}
+
+/* Share letter */
+.letter-card{background:var(--card);border-radius:var(--rl);padding:28px;margin:24px 0;border:1px solid var(--border)}
+.letter-card h3{color:var(--forest);margin-bottom:8px}
+.letter-card>p{font-size:0.9rem;margin-bottom:14px}
+.letter-body{background:var(--cream);border:1px solid var(--border);border-radius:var(--r);padding:24px;font-size:0.92rem;color:var(--txt2);line-height:1.7;white-space:pre-wrap;max-height:400px;overflow-y:auto}
+.letter-actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+.letter-copied{font-size:0.82rem;color:var(--deep-sage);margin-left:8px}
+
+/* Resources */
+.res-section{margin:20px 0}
+.res-section h4{font-family:'Fraunces',serif;font-size:0.95rem;color:var(--brown);margin-bottom:6px}
+.res-section p,.res-section a{font-size:0.88rem}
+.res-section a{color:var(--deep-sage);text-decoration:none}
+.res-section a:hover{text-decoration:underline}
+
+.final-box{text-align:center;padding:32px;background:linear-gradient(135deg,var(--lt-sage),rgba(201,184,217,0.1));border-radius:var(--rl);margin-top:28px}
+.final-box h3{font-family:'Fraunces',serif;color:var(--forest);font-size:1.2rem;margin-bottom:10px}
+.final-box p{font-size:0.92rem;max-width:560px;margin:0 auto;line-height:1.7}
+
+.refs{margin-top:32px;padding-top:20px;border-top:1px solid var(--border)}
+.refs h3{font-size:0.92rem;margin-bottom:10px;color:var(--txt3)}
+.refs p{font-size:0.78rem;color:var(--txt3);line-height:1.5;margin-bottom:5px}
+.credits{margin-top:22px;padding-top:16px;border-top:1px solid var(--border);text-align:center}
+.credits p{font-size:0.82rem;color:var(--txt3)}
+.credits a{color:var(--deep-sage);text-decoration:none}
+.credits a:hover{text-decoration:underline}
+.legal{margin-top:18px;padding:18px 22px;border-radius:var(--r);background:rgba(196,112,75,0.05);border:1px solid rgba(196,112,75,0.1)}
+.legal p{font-size:0.74rem;color:var(--txt3);line-height:1.5}
+.legal strong{color:var(--txt2)}
+
+/* Dyslexia-friendly mode */
+[data-dyslexia="true"]{font-family:'Lexend',sans-serif!important;letter-spacing:0.03em;word-spacing:0.12em}
+[data-dyslexia="true"] .q-text{font-family:'Lexend',sans-serif!important;font-size:1.25rem!important;line-height:1.8!important}
+[data-dyslexia="true"] .opt{font-size:1.05rem!important;padding:16px 20px!important;line-height:1.6!important}
+[data-dyslexia="true"] p,[data-dyslexia="true"] li{line-height:1.85!important;letter-spacing:0.02em}
+[data-dyslexia="true"] .interp p,[data-dyslexia="true"] .interp li{font-size:0.96rem!important}
+[data-dyslexia="true"] .domain-desc{font-size:0.94rem!important;line-height:1.8!important}
+
+/* Toolbar (theme + dyslexia toggles) */
+.toolbar{position:fixed;top:16px;right:16px;z-index:100;display:flex;gap:8px}
+.tool-btn{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--border);background:var(--card);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all 0.3s;box-shadow:var(--shd)}
+.tool-btn:hover{transform:scale(1.08);box-shadow:var(--shd2)}
+.tool-btn.active{border-color:var(--deep-sage);background:var(--lt-sage)}
+
+/* Keyboard hints */
+.kbd-hint{display:none;font-size:0.7rem;color:var(--txt3);margin-left:auto;padding:2px 7px;border-radius:4px;background:var(--border);font-family:monospace;font-weight:600}
+@media(hover:hover)and(pointer:fine){.kbd-hint{display:inline-block}}
+
+/* Time estimate */
+.time-est{font-size:0.82rem;color:var(--txt3);text-align:center;margin-top:6px;font-style:italic}
+
+/* Skip transitions link */
+.skip-link{font-size:0.82rem;color:var(--txt3);cursor:pointer;border:none;background:none;font-family:'DM Sans',sans-serif;text-decoration:underline;margin-top:12px;transition:color 0.2s}
+.skip-link:hover{color:var(--txt)}
+
+.spg{display:flex;gap:3px;margin-bottom:6px;height:4px}
+.sg{flex:1;border-radius:2px;background:var(--peach);transition:background .3s}
+.sg.dn{background:var(--sage)}.sg.cur{background:var(--deep-sage)}
+.rvg{display:grid;grid-template-columns:repeat(auto-fill,minmax(36px,1fr));gap:4px;margin:16px 0}
+.rvd{width:36px;height:36px;border-radius:8px;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.7rem;cursor:pointer;transition:all .2s;font-weight:500;color:var(--txt3);position:relative}
+.rvd.ans{background:var(--lt-sage);border-color:var(--sage);color:var(--deep-sage)}
+.rvd.un{background:rgba(196,112,75,.08);border-color:rgba(196,112,75,.3);color:var(--terra)}
+.rvd.fl::after{content:'\2665';position:absolute;top:-4px;right:-2px;font-size:8px;color:var(--soft-terra)}
+.rvsl{font-size:.78rem;color:var(--txt3);font-weight:600;margin:12px 0 6px;text-transform:uppercase;letter-spacing:.04em}
+.abg{margin-bottom:20px}
+.abg label{display:block;font-family:'Fraunces',serif;font-size:1rem;color:var(--forest);margin-bottom:10px;font-weight:400}
+.abo{display:flex;flex-wrap:wrap;gap:8px}
+.abi{padding:10px 16px;border-radius:var(--rs);border:1.5px solid var(--border);background:var(--card);font-family:'DM Sans',sans-serif;font-size:.92rem;color:var(--txt);cursor:pointer;transition:all .2s}
+.abi:hover{border-color:var(--sage);background:var(--lt-sage)}
+.abi.sel{border-color:var(--deep-sage);background:var(--lt-sage);font-weight:500;color:var(--forest)}
+.rbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:16px;padding:14px 18px;background:rgba(201,169,110,.06);border-radius:var(--rs);border:1px solid rgba(201,169,110,.15)}
+.rbar input{flex:1;min-width:160px;padding:8px 12px;border-radius:var(--rs);border:1.5px solid var(--border);font-family:'DM Sans',sans-serif;font-size:.88rem;background:var(--card);color:var(--txt);outline:none}
+.rbar input:focus{border-color:var(--deep-sage)}
+.sbtn{padding:8px 16px;border-radius:20px;border:1px solid var(--sage);background:var(--card);font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;cursor:pointer;color:var(--forest)}
+.sbtn.pr{background:var(--deep-sage);color:white;border:none}
+.shbox{background:linear-gradient(135deg,rgba(183,201,168,.2),rgba(201,169,110,.08));border:2px solid var(--sage);border-radius:var(--rl);padding:24px;margin-bottom:24px;animation:fadeUp .5s ease-out}
+.shbox h3{color:var(--forest);margin-bottom:8px}.shbox p{font-size:.92rem;line-height:1.6}
+.mcd{border-radius:var(--rl);padding:24px;margin:24px 0;border:1px solid var(--border)}
+.mcd.cn{background:linear-gradient(135deg,rgba(196,112,75,.06),rgba(255,232,214,.15));border-color:rgba(196,112,75,.2)}
+.mcd.ok{background:var(--lt-sage)}.mcd h3{color:var(--forest);margin-bottom:8px}.mcd p{font-size:.92rem;line-height:1.6}
+.surl{display:flex;gap:8px;align-items:center;margin-top:12px;padding:10px 14px;background:rgba(183,201,168,.08);border-radius:var(--rs);border:1px solid var(--border)}
+.surl input{flex:1;padding:6px 10px;border-radius:var(--rs);border:1px solid var(--border);font-size:.8rem;background:var(--card);color:var(--txt);font-family:monospace;outline:none}
+@media(max-width:600px){
+  .app{padding:16px 14px 60px}.card{padding:22px 16px}
+  .btn{padding:12px 20px;font-size:0.92rem}
+  .toolbar{top:10px;right:10px}.tool-btn{width:36px;height:36px;font-size:15px}
+  .q-footer{flex-direction:column-reverse;gap:14px;align-items:stretch}
+  .qnav{justify-content:space-between}
+}
+@media print{body::before,.toolbar{display:none}.btn,.nb,.qnav,.btn-row,.q-footer{display:none!important}.card{box-shadow:none;border:1px solid #ddd}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<script type="text/babel">
+/* ================================================================ */
+const DOMAINS = {
+  autism:{label:'Autism Spectrum',icon:'🧩',iconBg:'linear-gradient(135deg,#B7C9A8,#7A9B68)',source:'AQ-10 (Allison, Auyeung & Baron-Cohen, 2012)',citation:'Allison, C., Auyeung, B., & Baron-Cohen, S. (2012). Toward brief "red flags" for autism screening. J. Am. Acad. Child Adolesc. Psychiatry, 51(2), 202-212.',maxScore:10,threshold:6,
+    description:'Autism is a neurological difference that affects how a person processes social information, sensory input, and patterns. Autistic people often think in deeply systematic ways, notice details others miss, and may find unwritten social rules confusing or exhausting. It is not a disease or a deficit; it is a different way of experiencing the world. Many autistic adults were not identified in childhood, especially women and people who learned to mask their differences.',
+    prevalence:'Estimated to affect roughly 1 to 2% of the general population, though many adults remain undiagnosed.'},
+  adhd:{label:'ADHD',icon:'⚡',iconBg:'linear-gradient(135deg,#C9A96E,#D4956A)',source:'ASRS-v1.1 Parts A & B (Kessler et al., 2005)',citation:'Kessler, R.C., et al. (2005). The WHO Adult ADHD Self-Report Scale (ASRS). Psychological Medicine, 35(2), 245-256.',maxScore:18,threshold:12,
+    description:'Attention Deficit Hyperactivity Disorder (ADHD) is a neurological condition affecting how the brain regulates attention, impulses, and activity levels. People with ADHD often experience difficulty sustaining focus on low-interest tasks while being capable of extraordinary concentration on things that engage them (called hyperfocus). Restlessness, impulsivity, and challenges with time management are common. ADHD is not about a lack of willpower; it reflects real differences in brain chemistry, particularly in dopamine regulation.',
+    prevalence:'Affects approximately 4 to 5% of adults worldwide. Many are first diagnosed in adulthood.'},
+  sensory:{label:'Sensory Processing Sensitivity',icon:'🌿',iconBg:'linear-gradient(135deg,#C9B8D9,#B7C9A8)',source:'HSP Scale (Aron & Aron, 1997, abridged)',citation:'Aron, E.N. & Aron, A. (1997). Sensory-processing sensitivity and its relation to introversion and emotionality. J. Pers. Soc. Psychol., 73(2), 345-368.',maxScore:24,threshold:14,
+    description:'Sensory Processing Sensitivity (sometimes called being a Highly Sensitive Person, or HSP) is a temperament trait in which the nervous system processes stimuli more deeply and thoroughly than average. People with high sensitivity tend to be more affected by loud sounds, bright lights, strong smells, and the emotional energy of others. They often have rich inner lives, deep empathy, and strong reactions to art, music, and nature. It is not a disorder but a biological trait found across many species.',
+    prevalence:'Found in approximately 15 to 20% of the population. It often co-occurs with autism and ADHD.'},
+  dyslexia:{label:'Dyslexia',icon:'📖',iconBg:'linear-gradient(135deg,#D4956A,#C4704B)',source:'Adult Dyslexia Checklist (Vinegrad, 1994; Smythe & Everatt, 2001)',citation:'Vinegrad, M. (1994). A revised Adult Dyslexia Checklist. Educare, 48. Smythe, I. & Everatt, J. (2001). British Dyslexia Association checklist.',maxScore:21,threshold:12,
+    description:'Dyslexia is a learning difference that primarily affects reading, writing, and spelling. It reflects a difference in how the brain processes written language, not a lack of intelligence. Many dyslexic people struggle with decoding words, reading speed, and spelling accuracy, while excelling in visual thinking, creative problem-solving, and big-picture reasoning. Dyslexia often runs in families and persists into adulthood, though many adults develop effective workarounds that can mask the underlying difficulty.',
+    prevalence:'Estimated to affect 5 to 10% of the population, making it one of the most common learning differences.'},
+  dyscalculia:{label:'Dyscalculia',icon:'🔢',iconBg:'linear-gradient(135deg,#5C8A9B,#7A9B68)',source:'Informed by Butterworth Dyscalculia Screener & Cipora et al. (2015)',citation:'Butterworth, B. (2003). Dyscalculia Screener. nferNelson. Cipora, K., et al. (2015). Psychological Research, 80, 710-726.',maxScore:21,threshold:12,
+    description:'Dyscalculia (sometimes called "math dyslexia") is a learning difference that affects number sense, mental arithmetic, and quantitative reasoning. People with dyscalculia may struggle with basic calculations, estimating quantities, telling time on analog clocks, handling money, or understanding graphs. Like dyslexia, it reflects a genuine neurological difference, not a lack of effort. Many adults with dyscalculia have developed anxiety around numbers after years of struggling in silence.',
+    prevalence:'Estimated to affect 3 to 7% of the population, though it is significantly underdiagnosed compared to dyslexia.'},
+  dyspraxia:{label:'Dyspraxia / DCD',icon:'🤸',iconBg:'linear-gradient(135deg,#8B6F5C,#D4956A)',source:'ADC (Kirby et al., 2010)',citation:'Kirby, A., et al. (2010). Adult DCD/Dyspraxia Checklist. Research in Dev. Disabilities, 31(1), 131-139.',maxScore:21,threshold:12,
+    description:'Developmental Coordination Disorder (DCD), commonly known as dyspraxia, is a neurological condition affecting motor coordination and physical planning. People with DCD may appear clumsy, have difficulty with handwriting and fine motor tasks, struggle to learn new physical skills, and find it hard to judge spatial relationships and force. It is not about physical fitness or practice; the brain processes movement instructions differently. DCD frequently co-occurs with ADHD and dyslexia.',
+    prevalence:'Estimated to affect 5 to 6% of the population. Many adults have never heard of it despite experiencing its effects daily.'},
+  execfn:{label:'Executive Function',icon:'🗂️',iconBg:'linear-gradient(135deg,#D4956A,#C4704B)',source:'Informed by BRIEF-A (Roth, Isquith & Gioia, 2005)',citation:'Roth, R.M., Isquith, P.K., & Gioia, G.A. (2005). BRIEF-A. PAR.',maxScore:24,threshold:14,
+    description:'Executive functions are the brain\'s management system: the cognitive skills that help you plan, organize, start tasks, manage time, hold information in working memory, and shift flexibly between activities. When executive function is impaired, daily life can feel like trying to run a company without a manager. Tasks pile up, deadlines slip, and the gap between intention and action can feel enormous. Executive function difficulties are not a standalone diagnosis but almost always accompany other neurodivergent conditions, especially ADHD and autism.',
+    prevalence:'Executive function challenges are a core feature of ADHD and are also common in autism, dyslexia, and other neurodevelopmental conditions.'},
+  masking:{label:'Masking / Compensation',icon:'\u{1F3AD}',iconBg:'linear-gradient(135deg,#B8A0C8,#8B7FA8)',source:'Informed by CAT-Q (Hull et al., 2019)',citation:'Hull et al. (2019). J. Autism Dev. Disord., 49, 819-833.',maxScore:15,threshold:9,
+    description:'Masking (camouflaging) is the effort to hide neurodivergent traits and appear neurotypical. High masking means screeners may undercount your actual traits. Masking is exhausting and can lead to burnout, identity confusion, and delayed diagnosis.',
+    prevalence:'Especially common in autistic women, people of color, and those who grew up without diagnosis.'},
+  childhood:{label:'Childhood Patterns',icon:'\u{1F3E0}',iconBg:'linear-gradient(135deg,#C9A96E,#B7C9A8)',source:'Informed by WURS (Ward, Wender & Reimherr, 1993)',citation:'Ward et al. (1993). Am. J. Psychiatry, 150, 885-890.',maxScore:15,threshold:9,
+    description:'Neurodevelopmental conditions are present from early life. Childhood patterns help distinguish lifelong neurodivergence from conditions that developed later (burnout, trauma). These retrospective questions ask about life before adult coping strategies.',
+    prevalence:'Retrospective self-report is a standard part of adult neurodevelopmental assessment.'},
+};
+
+const MOOD_INFO = {
+  phq2:{label:'Depression Screen (PHQ-2)',source:'PHQ-2 (Kroenke et al., 2003)',citation:'Kroenke et al. (2003). Medical Care, 41, 1284-1292.',maxScore:6,threshold:3},
+  gad2:{label:'Anxiety Screen (GAD-2)',source:'GAD-2 (Kroenke et al., 2007)',citation:'Kroenke et al. (2007). Annals of Internal Medicine, 146, 317-325.',maxScore:6,threshold:3},
+};
+
+const SECTIONS = {
+  focus:{label:'Focus & Attention',color:'#C9A96E',bg:'rgba(201,169,110,0.12)',
+    transition:{icon:'⚡',heading:'Let\'s start with attention and focus',body:'These first questions explore how your mind handles concentration, stillness, and the pull of distraction. There are no right or wrong patterns here, only your experience.'}},
+  social:{label:'Social & Communication',color:'#7A9B68',bg:'rgba(183,201,168,0.15)',
+    transition:{icon:'🧩',heading:'Now, social and communication',body:'This section explores how you read social cues, process conversations, and navigate the unspoken rules of interaction. Many people find that difficulties here were the first thing they learned to mask.'}},
+  sensory:{label:'Sensory Experience',color:'#9B7FB8',bg:'rgba(201,184,217,0.15)',
+    transition:{icon:'🌿',heading:'How you experience the world around you',body:'These questions are about your senses: how deeply you absorb light, sound, texture, and the emotional energy of the people near you. Some of us feel everything more intensely than we realized.'}},
+  reading:{label:'Reading & Language',color:'#C4704B',bg:'rgba(196,112,75,0.1)',
+    transition:{icon:'📖',heading:'Reading and language processing',body:'This section looks at how your brain handles the written word: decoding, spelling, sequencing. If you have always been a slower reader or a creative speller, you are not alone, and there may be a reason.'}},
+  numbers:{label:'Numbers & Sequences',color:'#5C8A9B',bg:'rgba(92,138,155,0.1)',
+    transition:{icon:'🔢',heading:'Your relationship with numbers',body:'These questions explore number sense, mental arithmetic, and how comfortable you feel with quantitative information. Many adults carry quiet shame about struggling with math. This is a safe place to be honest about it.'}},
+  movement:{label:'Coordination & Movement',color:'#8B6F5C',bg:'rgba(139,111,92,0.1)',
+    transition:{icon:'🤸',heading:'Coordination and movement',body:'This section is about your body: balance, fine motor skills, spatial awareness. If you have ever been called clumsy and felt it was unfair, these questions may resonate.'}},
+  planning:{label:'Planning & Organization',color:'#D4956A',bg:'rgba(212,149,106,0.12)',
+    transition:{icon:'🗂️',heading:'Almost there: planning and organization',body:'These final questions explore the mental scaffolding of daily life: how you plan, organize, remember, and shift between tasks. This is often where neurodivergent adults feel the most friction, and the most relief when they finally understand why.'}},
+  masking:{label:'Masking & Compensation',color:'#8B7FA8',bg:'rgba(184,160,200,.12)',
+    transition:{icon:'🎭',heading:'The effort behind the scenes',body:'These questions are about the work you do to appear normal. Many neurodivergent adults have spent years perfecting this performance without realizing it had a name.'}},
+  childhood:{label:'Looking Back',color:'#9B8B6E',bg:'rgba(201,169,110,.1)',
+    transition:{icon:'🏠',heading:'Looking back at childhood',body:'Neurodevelopmental differences are present from early life. These questions ask about your childhood, before you developed adult coping strategies.'}},
+  mood:{label:'Mood & Wellbeing',color:'#7A8B6E',bg:'rgba(122,139,110,.1)',
+    transition:{icon:'💚',heading:'A brief check-in on mood',body:'Depression and anxiety can mimic or amplify many neurodivergent traits. These four quick questions help put your other results in context.'}},
+};
+
+const SCALES = {
+  freq5:[{label:'Never',value:0},{label:'Rarely',value:1},{label:'Sometimes',value:2},{label:'Often',value:3},{label:'Very often',value:4}],
+  agree4:[{label:'Definitely agree',value:3},{label:'Slightly agree',value:2},{label:'Slightly disagree',value:1},{label:'Definitely disagree',value:0}],
+  likert4:[{label:'Not at all',value:0},{label:'A little',value:1},{label:'Moderately',value:2},{label:'Very much',value:3}],
+  freq4:[{label:'Not at all',value:0},{label:'Several days',value:1},{label:'More than half the days',value:2},{label:'Nearly every day',value:3}],
+};
+
+const QUESTIONS = [
+  // FOCUS (ADHD ASRS A+B)
+  {text:"How often do you have trouble wrapping up the final details of a project, once the challenging parts have been done?",section:'focus',domains:['adhd'],scoring:'agree',scale:'freq5'},
+  {text:"How often do you have difficulty getting things in order when a task requires organization?",section:'focus',domains:['adhd','execfn'],scoring:'agree',scale:'freq5',consolidated:true},
+  {text:"How often do you have problems remembering appointments or obligations?",section:'focus',domains:['adhd'],scoring:'agree',scale:'freq5'},
+  {text:"When you have a task that requires a lot of thought, how often do you avoid or delay getting started?",section:'focus',domains:['adhd','execfn'],scoring:'agree',scale:'freq5',consolidated:true},
+  {text:"How often do you fidget or squirm with your hands or feet when you have to sit down for a long time?",section:'focus',domains:['adhd'],scoring:'agree',scale:'freq5'},
+  {text:"How often do you feel overly active and compelled to do things, like you were driven by a motor?",section:'focus',domains:['adhd'],scoring:'agree',scale:'freq5'},
+  {text:"How often do you make careless mistakes when working on a boring or difficult project?",section:'focus',domains:['adhd'],scoring:'agree',scale:'freq5'},
+  {text:"How often do you have difficulty keeping your attention when doing boring or repetitive work?",section:'focus',domains:['adhd'],scoring:'agree',scale:'freq5'},
+  {text:"How often do you have difficulty concentrating on what people say to you, even when they are speaking directly to you?",section:'focus',domains:['adhd'],scoring:'agree',scale:'freq5'},
+  {text:"How often do you misplace or have difficulty finding things at home or at work?",section:'focus',domains:['adhd'],scoring:'agree',scale:'freq5'},
+  {text:"How often are you distracted by activity or noise around you?",section:'focus',domains:['adhd'],scoring:'agree',scale:'freq5'},
+  {text:"How often do you leave your seat in meetings or other situations in which you are expected to remain seated?",section:'focus',domains:['adhd'],scoring:'agree',scale:'freq5'},
+  {text:"How often do you feel restless or fidgety?",section:'focus',domains:['adhd'],scoring:'agree',scale:'freq5'},
+  {text:"How often do you have difficulty unwinding and relaxing when you have time to yourself?",section:'focus',domains:['adhd'],scoring:'agree',scale:'freq5'},
+  {text:"How often do you find yourself talking too much in social situations?",section:'focus',domains:['adhd'],scoring:'agree',scale:'freq5'},
+  {text:"When you're in a conversation, how often do you finish other people's sentences before they can?",section:'focus',domains:['adhd'],scoring:'agree',scale:'freq5'},
+  {text:"How often do you have difficulty waiting your turn in situations where turn-taking is required?",section:'focus',domains:['adhd'],scoring:'agree',scale:'freq5'},
+  {text:"How often do you interrupt others when they are busy?",section:'focus',domains:['adhd','execfn'],scoring:'agree',scale:'freq5',consolidated:true},
+  // SOCIAL (Autism AQ-10)
+  {text:"I often notice small sounds when others do not.",section:'social',domains:['autism'],scoring:'agree',scale:'agree4'},
+  {text:"I usually concentrate more on the whole picture, rather than the small details.",section:'social',domains:['autism'],scoring:'disagree',scale:'agree4'},
+  {text:"I find it difficult to do more than one thing at once.",section:'social',domains:['autism','execfn'],scoring:'agree',scale:'agree4',consolidated:true},
+  {text:"If there is an interruption, I find it hard to switch back to what I was doing.",section:'social',domains:['autism'],scoring:'agree',scale:'agree4'},
+  {text:"I find it easy to 'read between the lines' when someone is talking to me.",section:'social',domains:['autism'],scoring:'disagree',scale:'agree4'},
+  {text:"I know how to tell if someone listening to me is getting bored.",section:'social',domains:['autism'],scoring:'disagree',scale:'agree4'},
+  {text:"When I'm reading a story, I find it difficult to work out the characters' intentions.",section:'social',domains:['autism'],scoring:'agree',scale:'agree4'},
+  {text:"I like to collect information about categories of things (e.g., types of car, bird, train, plant).",section:'social',domains:['autism'],scoring:'agree',scale:'agree4'},
+  {text:"I find it easy to work out what someone is thinking or feeling just by looking at their face.",section:'social',domains:['autism'],scoring:'disagree',scale:'agree4'},
+  {text:"I find it difficult to work out people's intentions.",section:'social',domains:['autism'],scoring:'agree',scale:'agree4'},
+  // SENSORY (HSP)
+  {text:"I am easily overwhelmed by strong sensory input (bright lights, loud sounds, strong smells, coarse fabrics).",section:'sensory',domains:['sensory'],scoring:'agree',scale:'likert4'},
+  {text:"Other people's moods affect me noticeably.",section:'sensory',domains:['sensory'],scoring:'agree',scale:'likert4'},
+  {text:"I tend to be very sensitive to pain.",section:'sensory',domains:['sensory'],scoring:'agree',scale:'likert4'},
+  {text:"I find myself needing to withdraw during busy days, into a quiet private place for relief from stimulation.",section:'sensory',domains:['sensory'],scoring:'agree',scale:'likert4'},
+  {text:"I am particularly sensitive to the effects of caffeine.",section:'sensory',domains:['sensory'],scoring:'agree',scale:'likert4'},
+  {text:"I notice and enjoy delicate or fine scents, tastes, sounds, or works of art.",section:'sensory',domains:['sensory'],scoring:'agree',scale:'likert4'},
+  {text:"I have a rich, complex inner life.",section:'sensory',domains:['sensory'],scoring:'agree',scale:'likert4'},
+  {text:"I am deeply moved by the arts or music.",section:'sensory',domains:['sensory'],scoring:'agree',scale:'likert4'},
+  // READING (Dyslexia)
+  {text:"I find it difficult to read aloud without stumbling or misreading words.",section:'reading',domains:['dyslexia'],scoring:'agree',scale:'likert4'},
+  {text:"I often have to re-read a passage several times to understand its meaning.",section:'reading',domains:['dyslexia'],scoring:'agree',scale:'likert4'},
+  {text:"I find spelling difficult and often get the letters in the wrong order.",section:'reading',domains:['dyslexia'],scoring:'agree',scale:'likert4'},
+  {text:"I confuse similar-looking words (e.g., 'was' and 'saw', 'there' and 'their').",section:'reading',domains:['dyslexia'],scoring:'agree',scale:'likert4'},
+  {text:"I have difficulty filling in forms or writing letters without making errors.",section:'reading',domains:['dyslexia'],scoring:'agree',scale:'likert4'},
+  {text:"I sometimes get confused about left and right directions.",section:'reading',domains:['dyslexia','dyspraxia'],scoring:'agree',scale:'likert4',consolidated:true},
+  {text:"I find it hard to remember phone numbers or sequences of numbers that someone tells me.",section:'reading',domains:['dyslexia','dyscalculia'],scoring:'agree',scale:'likert4',consolidated:true},
+  // NUMBERS (Dyscalculia)
+  {text:"I find it very difficult to do mental arithmetic, even simple sums.",section:'numbers',domains:['dyscalculia'],scoring:'agree',scale:'likert4'},
+  {text:"I struggle to estimate quantities or distances (e.g., how many items in a jar, how far something is).",section:'numbers',domains:['dyscalculia'],scoring:'agree',scale:'likert4'},
+  {text:"I have difficulty remembering multiplication tables or basic number facts.",section:'numbers',domains:['dyscalculia'],scoring:'agree',scale:'likert4'},
+  {text:"I find it hard to read an analog clock reliably.",section:'numbers',domains:['dyscalculia'],scoring:'agree',scale:'likert4'},
+  {text:"I get anxious when I need to handle money or split a bill.",section:'numbers',domains:['dyscalculia'],scoring:'agree',scale:'likert4'},
+  {text:"I struggle to understand graphs, charts, or timetables.",section:'numbers',domains:['dyscalculia'],scoring:'agree',scale:'likert4'},
+  // MOVEMENT (Dyspraxia)
+  {text:"I am often described as clumsy or uncoordinated.",section:'movement',domains:['dyspraxia'],scoring:'agree',scale:'likert4'},
+  {text:"I have difficulty with fine motor tasks (e.g., handwriting, using scissors, fastening buttons).",section:'movement',domains:['dyspraxia'],scoring:'agree',scale:'likert4'},
+  {text:"Learning new physical skills (sports, driving, dancing) takes me much longer than it seems to take others.",section:'movement',domains:['dyspraxia'],scoring:'agree',scale:'likert4'},
+  {text:"I frequently bump into door frames, furniture, or other objects.",section:'movement',domains:['dyspraxia'],scoring:'agree',scale:'likert4'},
+  {text:"I find it hard to judge how much force to use (e.g., closing doors too hard, gripping things too tightly).",section:'movement',domains:['dyspraxia'],scoring:'agree',scale:'likert4'},
+  {text:"My balance feels unreliable, especially on uneven surfaces or stairs.",section:'movement',domains:['dyspraxia'],scoring:'agree',scale:'likert4'},
+  // PLANNING (ExecFn)
+  {text:"I have difficulty planning out the steps needed to complete a project.",section:'planning',domains:['execfn'],scoring:'agree',scale:'likert4'},
+  {text:"I forget what I was about to say or do, even when it seemed important moments ago.",section:'planning',domains:['execfn'],scoring:'agree',scale:'likert4'},
+  {text:"I struggle to shift from one activity or way of thinking to another.",section:'planning',domains:['execfn'],scoring:'agree',scale:'likert4'},
+  {text:"I lose track of time and frequently underestimate how long things take.",section:'planning',domains:['execfn'],scoring:'agree',scale:'likert4'},
+  // MASKING (informed by CAT-Q)
+  {text:"I consciously rehearse what I am going to say before social interactions.",section:'masking',domains:['masking'],scoring:'agree',scale:'likert4'},
+  {text:"I monitor and adjust my facial expressions, tone, or body language to fit in.",section:'masking',domains:['masking'],scoring:'agree',scale:'likert4'},
+  {text:"I feel exhausted after social situations from the effort of appearing normal.",section:'masking',domains:['masking'],scoring:'agree',scale:'likert4'},
+  {text:"I copy or mimic other people's social behaviour because it does not come naturally to me.",section:'masking',domains:['masking'],scoring:'agree',scale:'likert4'},
+  {text:"I feel like there is a big difference between who I am in public and who I am when alone.",section:'masking',domains:['masking'],scoring:'agree',scale:'likert4'},
+  // CHILDHOOD (informed by WURS)
+  {text:"As a child, I was often told I was 'too sensitive,' 'too much,' or 'in my own world.'",section:'childhood',domains:['childhood'],scoring:'agree',scale:'likert4'},
+  {text:"As a child, I had difficulty making or keeping friends compared to other kids.",section:'childhood',domains:['childhood'],scoring:'agree',scale:'likert4'},
+  {text:"As a child, I was often restless, fidgety, or unable to sit still when expected to.",section:'childhood',domains:['childhood'],scoring:'agree',scale:'likert4'},
+  {text:"As a child, schoolwork that required reading, writing, or arithmetic felt much harder for me than for my classmates.",section:'childhood',domains:['childhood'],scoring:'agree',scale:'likert4'},
+  {text:"As a child, I often felt different from other children in ways I could not fully explain.",section:'childhood',domains:['childhood'],scoring:'agree',scale:'likert4'},
+  // MOOD (PHQ-2 + GAD-2)
+  {text:"Over the last two weeks, how often have you been bothered by little interest or pleasure in doing things?",section:'mood',domains:['mood_phq'],scoring:'agree',scale:'freq4'},
+  {text:"Over the last two weeks, how often have you been bothered by feeling down, depressed, or hopeless?",section:'mood',domains:['mood_phq'],scoring:'agree',scale:'freq4'},
+  {text:"Over the last two weeks, how often have you been bothered by feeling nervous, anxious, or on edge?",section:'mood',domains:['mood_gad'],scoring:'agree',scale:'freq4'},
+  {text:"Over the last two weeks, how often have you been bothered by not being able to stop or control worrying?",section:'mood',domains:['mood_gad'],scoring:'agree',scale:'freq4'},
+];
+
+/* ── SCORING ── */
+function computeScores(answers){
+  const s={};Object.keys(DOMAINS).forEach(d=>s[d]=0);
+  s.mood_phq=0;s.mood_gad=0;
+  QUESTIONS.forEach((q,i)=>{const v=answers[i];if(v===null)return;
+    q.domains.forEach(dom=>{
+      if(dom==='autism'){if(q.scoring==='agree'&&v>=2)s.autism++;else if(q.scoring==='disagree'&&v<=1)s.autism++}
+      else if(dom==='adhd'){if(v>=2)s.adhd++}
+      else if(dom==='mood_phq'||dom==='mood_gad'){s[dom]+=v}
+      else{if(q.scoring==='disagree'){const mx=Math.max(...SCALES[q.scale].map(o=>o.value));s[dom]+=(mx-v)}else{s[dom]+=Math.min(v,3)}}
+    });
+  });return s;
+}
+
+/* ── FEEDBACK (same rich content) ── */
+const FB={
+autism:{above:{heading:'Notable autistic traits identified',summary:"Your answers reveal a pattern that many autistic adults recognize in themselves: a distinctive way of processing social cues, sensory information, and patterns. This is not a limitation to fix; it is a lens through which you experience the world.",strengths:["Deep pattern recognition and attention to detail that others often miss","Capacity for intense expertise in areas that truly engage you","A natural directness and honesty that people close to you likely value","Systematic thinking that can be a powerful asset in structured work"],actions:["A formal evaluation from a psychologist experienced with adult autism is a worthwhile next step. Diagnosis can unlock tailored support, self-understanding, and workplace accommodations.","Explore autistic adult communities where people share strategies for navigating sensory environments and social demands.","Keep a brief sensory journal for a week: note which environments drain you and which recharge you. Small adjustments to light, sound, and routine can make a real difference.","If you mask (adjust your behavior to fit neurotypical expectations), know that this takes enormous energy. You deserve spaces where you can be yourself."],resources:["Autistic Self Advocacy Network (autisticadvocacy.org)","\"Unmasking Autism\" by Devon Price","National Autistic Society adult resources (autism.org.uk)"]},moderate:{heading:'Some autistic traits present',summary:"Your responses show some patterns associated with autism, though below the typical screening threshold. Many people carry a mix of traits, and understanding yours can still bring valuable self-awareness.",strengths:["An eye for detail and consistency","Deep engagement with topics that interest you"],actions:["If these traits resonate with your lived experience, a professional conversation could still be worthwhile.","Experiment with environmental adjustments and notice what helps."],resources:["Embrace Autism (embrace-autism.com)"]},low:{heading:'Few autistic traits indicated',summary:"Classic autistic patterns do not appear strongly in your responses. If something still feels different about how you navigate the world, the other areas in this report may offer a closer fit.",strengths:["Flexible social communication","Ease shifting between tasks and contexts"],actions:["Trust your instincts if daily life feels harder than expected."],resources:[]}},
+adhd:{above:{heading:'Pattern consistent with ADHD',summary:"Across both parts of the ASRS screener, your answers align with how many adults with ADHD describe their daily lives. An ADHD brain is wired for novelty, urgency, and big-picture connections. Understanding this wiring is the first step toward working with it.",strengths:["Hyperfocus that can produce extraordinary creativity and output","Quick, associative thinking that connects ideas others miss","Resilience and adaptability built from years of finding workarounds","Energy and enthusiasm that can genuinely inspire others"],actions:["A formal ADHD evaluation (clinical interview plus standardized scales) is a strong next step. Coaching, ADHD-adapted CBT, and medication are all evidence-based options.","Try body doubling: working alongside someone to help your brain engage with less stimulating tasks.","Use external systems without guilt: timers, alarms, checklists, visual cues. These respect how your working memory operates.","Build in movement breaks. The restlessness is your body communicating a genuine need."],resources:["CHADD (chadd.org)","\"Driven to Distraction\" by Hallowell & Ratey","How to ADHD (YouTube, Jessica McCabe)"]},moderate:{heading:'Some ADHD-related patterns present',summary:"You endorsed a number of ADHD-associated experiences, though below the typical screening cutoff. Even moderate patterns can affect quality of life.",strengths:["A flexible, multitasking mind","Creative problem-solving and comfort with ambiguity"],actions:["If focus or organization challenges affect daily life, a professional assessment is still worthwhile.","Experiment with structured routines and notice which ones reduce friction."],resources:["ADDitude Magazine (additudemag.com)"]},low:{heading:'Few ADHD-related patterns indicated',summary:"Core ADHD patterns do not appear strongly present. If attention or energy still feel off, consider stress, sleep, burnout, or a different profile.",strengths:["Solid sustained attention and self-regulation","Reliable task completion"],actions:["If something brought you here, honor that instinct."],resources:[]}},
+sensory:{above:{heading:'High sensory processing sensitivity',summary:"Your nervous system appears to process stimuli more deeply than average. Found in roughly 15 to 20 percent of the population, high sensitivity is a temperament, not a disorder. It comes with real advantages once you learn to work with it.",strengths:["An unusually rich inner life with deep emotional and aesthetic experiences","Strong empathy and attunement to others","Ability to notice subtle environmental cues most people miss","Thoughtful, conscientious decision-making"],actions:["Design your environment with intention: noise-cancelling headphones, softer lighting, and comfortable textures are basic maintenance for your nervous system.","Build decompression time into your schedule after high-stimulation events.","Explore whether your sensitivity co-occurs with autism or ADHD (the overlap is very common).","Practice setting boundaries around overwhelm."],resources:["hsperson.com","\"The Highly Sensitive Person\" by Elaine Aron"]},moderate:{heading:'Moderate sensory sensitivity',summary:"You experience some heightened sensitivity, which can be a strength in creative and caregiving roles.",strengths:["Balanced sensitivity that catches subtleties without overwhelm","Emotional depth and aesthetic appreciation"],actions:["Notice which specific stimuli affect you most and create targeted strategies."],resources:[]},low:{heading:'Lower sensory sensitivity',summary:"Sensory processing appears to be at typical intensity for you.",strengths:["Comfort in busy environments","Sensory resilience"],actions:["If certain environments drain you, those specific patterns are worth noting."],resources:[]}},
+dyslexia:{above:{heading:'Significant dyslexic patterns identified',summary:"Your answers point to meaningful difficulties with reading, spelling, and language processing. Dyslexia reflects a difference in how your brain handles written language, not a lack of intelligence. Many dyslexic adults develop remarkable strengths precisely because their brains take a different route.",strengths:["Strong visual and spatial reasoning","Creative, lateral thinking","Big-picture understanding and intuitive grasp of complex systems","Persistence built from navigating a text-heavy world differently"],actions:["A formal dyslexia assessment can unlock workplace accommodations, assistive technology funding, and tailored support.","Explore text-to-speech and speech-to-text tools.","Try colored overlays or adjusted screen backgrounds.","If you have children, be aware that dyslexia runs in families."],resources:["International Dyslexia Association (dyslexiaida.org)","\"The Dyslexic Advantage\" by Brock & Fernette Eide"]},moderate:{heading:'Some dyslexic patterns present',summary:"Some reading and language processing difficulties showed up. You may have developed effective workarounds that mask the underlying pattern.",strengths:["Verbal reasoning that compensates well","Practical problem-solving"],actions:["If reading or writing tasks take significantly longer than expected, an assessment could clarify things."],resources:[]},low:{heading:'Few dyslexic patterns indicated',summary:"Reading and language processing appear to be relative strengths.",strengths:["Comfortable and efficient reading","Reliable spelling and decoding"],actions:["If certain literacy tasks frustrate you, consider vision, fatigue, or attention as factors."],resources:[]}},
+dyscalculia:{above:{heading:'Significant dyscalculic patterns identified',summary:"Your answers suggest genuine difficulties with number sense, mental arithmetic, and quantitative reasoning. Dyscalculia reflects a real difference in how your brain processes numerical information. This has nothing to do with effort or intelligence.",strengths:["Strong verbal and narrative reasoning","Creative, visual approaches to quantitative problems","Resilience from navigating a number-heavy world differently"],actions:["A formal assessment can confirm dyscalculia and may qualify you for accommodations.","Use calculators and budgeting apps without guilt.","If handling money causes anxiety, consider apps that minimize mental math.","Multi-sensory math approaches can make numerical concepts more accessible."],resources:["Dyscalculia.org","\"It Just Doesn't Add Up\" by Paul Moorcraft"]},moderate:{heading:'Some dyscalculic patterns present',summary:"You show moderate difficulties with numbers. Many adults manage these through workarounds without ever naming the pattern.",strengths:["Strong verbal skills that compensate","Practical strategies from experience"],actions:["If number-related tasks cause significant stress, a professional assessment could help."],resources:[]},low:{heading:'Few dyscalculic patterns indicated',summary:"Number sense and quantitative reasoning appear comfortable for you.",strengths:["Confident with numbers and estimates","Reliable mental arithmetic"],actions:["Occasional number mix-ups are normal variation."],resources:[]}},
+dyspraxia:{above:{heading:'Significant coordination challenges identified',summary:"Your responses suggest meaningful difficulties with motor coordination, balance, and physical planning, consistent with Developmental Coordination Disorder (dyspraxia). This is far more common in adults than most people realize, and frequently co-occurs with ADHD and dyslexia.",strengths:["Verbal and intellectual strengths that develop powerfully as compensation","Creative problem-solving from finding alternative approaches","Determination and persistence in tasks others take for granted"],actions:["An occupational therapist experienced with adult DCD can make a meaningful difference.","Explore workplace accommodations: adaptive equipment, voice-to-text, ergonomic setups.","Consider whether driving, cooking, or sports feel disproportionately stressful. Naming the reason often brings relief.","Connect with DCD/dyspraxia communities for validation and practical strategies."],resources:["Dyspraxia Foundation (dyspraxiafoundation.org.uk)","Movement Matters (movementmattersuk.org)"]},moderate:{heading:'Some coordination difficulties present',summary:"Moderate challenges with coordination can cause quiet frustration and fatigue from constant compensation.",strengths:["Sufficient coordination for most daily tasks","Adaptive strategies built through practice"],actions:["If clumsiness causes embarrassment, occupational therapy can help adults.","Gentle activities like swimming, yoga, or tai chi build confidence."],resources:[]},low:{heading:'Few coordination difficulties indicated',summary:"Motor coordination appears to be a comfortable area for you.",strengths:["Confident physical coordination","Ease learning new physical skills"],actions:["If specific motor tasks feel unusually difficult, fatigue or stress might contribute."],resources:[]}},
+execfn:{above:{heading:'Significant executive function challenges',summary:"Your responses point to meaningful difficulties with planning, organization, working memory, and cognitive flexibility. These are extremely common among neurodivergent adults and often cause more daily frustration than the \"headline\" conditions. Executive function can be supported effectively with the right tools.",strengths:["Creative, associative thinking that flourishes outside rigid structures","Brilliant performance under high-interest or high-urgency conditions","Adaptability from navigating a world not designed for your processing style"],actions:["Executive function difficulties almost always accompany ADHD, autism, or both. Seek assessment if you haven't already.","Externalize your executive functions: calendars, alarms, written step-by-step plans, visual trackers.","Break large tasks into the smallest possible steps. \"Do the next small thing\" works.","Consider working with an executive function coach."],resources:["\"Smart but Scattered\" by Peg Dawson & Richard Guare","PAAC coaching directory (paaccoaches.org)"]},moderate:{heading:'Some executive function difficulties',summary:"Occasional struggles with planning, memory, or getting started tend to spike under stress.",strengths:["Enough baseline to manage most demands","Self-awareness about your patterns"],actions:["Identify your top friction points and build one external system for each."],resources:[]},low:{heading:'Executive function appears strong',summary:"Planning, organization, and cognitive flexibility seem to come fairly naturally.",strengths:["Strong organizational abilities","Effective working memory"],actions:["Burnout and chronic stress can erode these skills. If they have declined recently, context matters more than this score."],resources:[]}},
+masking:{above:{heading:'High masking / compensatory effort detected',summary:"Your answers reveal significant effort spent hiding neurodivergent traits. This is one of the most important findings: high masking means your other scores may underestimate your actual traits. The real you may have more in common with neurodivergent profiles than your trait scores alone suggest.",strengths:["Extraordinary social adaptability and observational skills","Ability to function in demanding environments through sheer effort","Deep self-awareness about social dynamics"],actions:["Share your masking score alongside other results with any professional you consult.","Notice the cost: when do you feel most exhausted, and what situations require the most performance?","Explore unmasking gradually in safe contexts.","Consider that your other scores may be artificially low."],resources:["'Unmasking Autism' by Devon Price","CAT-Q research (Hull et al., 2019)"]},moderate:{heading:'Some masking behaviour present',summary:"You engage in moderate social compensation. This may reflect learned social skills rather than conscious masking, though the distinction is worth exploring.",strengths:["Good social flexibility","Awareness of social expectations"],actions:["Notice whether social situations leave you more drained than seems proportionate."],resources:[]},low:{heading:'Low masking indicated',summary:"You do not heavily mask or compensate, meaning your other scores are likely a more accurate reflection of your actual traits.",strengths:["Authenticity in social presentation","Less risk of masking-related burnout"],actions:["Your other scores can be interpreted more directly."],resources:[]}},
+childhood:{above:{heading:'Strong childhood patterns identified',summary:"Your retrospective answers point to significant neurodevelopmental patterns in childhood. This suggests your current traits are longstanding, a key criterion in formal diagnosis of ADHD and autism.",strengths:["Deep reserves of resilience from navigating these differences your entire life","Childhood experiences that, once understood, can reframe years of self-blame"],actions:["Gather school reports or childhood records if available; they are invaluable during evaluation.","Talk to family members about what they remember.","Consider how childhood coping strategies may now mask your traits on screeners."],resources:[]},moderate:{heading:'Some childhood patterns present',summary:"You recalled moderate patterns from childhood. Memory is imperfect and many people minimize childhood difficulties, so even moderate scores here are meaningful.",strengths:["Ability to reflect on early patterns","Coping strategies developed over a lifetime"],actions:["Talking to family members may fill in gaps in memory."],resources:[]},low:{heading:'Few childhood patterns recalled',summary:"Your retrospective answers did not reveal strong childhood patterns. This could mean your difficulties developed later, or that memories have faded.",strengths:["If traits are genuinely recent, they may respond well to targeted intervention"],actions:["Consider whether burnout, trauma, or life changes better explain current patterns."],resources:[]}}
+};
+
+function getFeedback(domain,score){
+  const d=DOMAINS[domain],pct=score/d.maxScore;
+  const level=score>=d.threshold?'above':pct>=0.35?'moderate':'low';
+  return{level,...FB[domain][level]};
+}
+
+/* ── CO-OCCURRENCE ── */
+function getCoOccurrences(fb){
+  const above=Object.entries(fb).filter(([,f])=>f.level==='above').map(([d])=>d);
+  const r=[],has=d=>above.includes(d);
+  if(has('autism')&&has('adhd'))r.push({title:'Autism + ADHD (sometimes called "AuDHD")',text:"This is one of the most common combinations, with 50 to 70% co-occurrence in research. ADHD craves novelty while autistic traits crave routine, creating an internal tug-of-war. Understanding both together, rather than separately, is key."});
+  if(has('adhd')&&has('dyslexia'))r.push({title:'ADHD + Dyslexia',text:"Roughly 30 to 40% of people with dyslexia also have ADHD. Attention difficulties compound decoding challenges. Assistive technology becomes especially valuable."});
+  if(has('dyslexia')&&has('dyscalculia'))r.push({title:'Dyslexia + Dyscalculia',text:"These frequently co-occur, reflecting shared differences in symbolic processing. Multi-sensory and technology-assisted approaches are especially important."});
+  if(has('adhd')&&has('dyspraxia'))r.push({title:'ADHD + Dyspraxia',text:"This pairing amplifies restlessness, disorganization, and difficulties with sequenced physical steps. Occupational therapy combined with ADHD strategies tends to be particularly effective."});
+  if(has('sensory')&&has('autism'))r.push({title:'Sensory Sensitivity + Autism',text:"Heightened sensory processing is nearly universal in autistic adults. Understanding that your sensory needs are neurological, not a matter of preference, can be deeply validating."});
+  if(has('execfn')&&has('adhd'))r.push({title:'Executive Function + ADHD',text:"Executive function challenges are so central to ADHD that many researchers consider them its core. External scaffolding is not optional but essential. These are among the most treatable aspects."});
+  if(has('masking')&&(has('autism')||has('adhd')))r.push({title:'Masking + Autism/ADHD traits',text:"High masking alongside elevated neurodivergent traits is common in late-identified adults. Your trait scores may underestimate the full picture. A clinician experienced with masking is essential."});
+  if(has('childhood')&&above.filter(d=>d!=='childhood'&&d!=='masking').length>0)r.push({title:'Childhood patterns + adult traits',text:"Elevated childhood patterns combined with adult trait scores strengthens the case for a neurodevelopmental origin, not something that started recently."});
+  if(above.length>=3&&r.length===0)r.push({title:'Multiple elevated areas',text:"Several domains scored high. Overlapping profiles are actually the norm in neurodivergent adults. A comprehensive neuropsychological evaluation can map how these interact in your specific case."});
+  return r;
+}
+
+/* ── SHARE LETTER GENERATOR ── */
+function generateShareLetter(feedback,scores){
+  const above=Object.keys(DOMAINS).filter(d=>feedback[d].level==='above');
+  const areaNames=above.map(d=>DOMAINS[d].label);
+  let letter=`Dear [name],\n\nI recently took some time to explore something I have been wondering about for a while. I completed a self-assessment tool that screens for several types of neurodivergence, and I wanted to share what I found with you, because you are someone I trust.\n\n`;
+  if(above.length>0){
+    letter+=`My results suggest that I may have traits consistent with ${areaNames.join(', ').replace(/, ([^,]*)$/,' and $1')}. `;
+    letter+=`This does not mean something is wrong with me. It means my brain may work differently from what is typically expected, and that difference might explain some things I have struggled with or wondered about.\n\n`;
+    letter+=`What I would appreciate from you:\n`;
+    letter+=`- Patience, as I learn more about what this means for me\n`;
+    letter+=`- Understanding that some things that seem easy for others may require more energy from me\n`;
+    letter+=`- Support if I decide to pursue a formal evaluation\n`;
+    letter+=`- Knowing that sharing this with you is itself a vulnerable step, and I appreciate you hearing me out\n\n`;
+  }else{
+    letter+=`My results did not show strong patterns in any single area, but the process itself was valuable. It helped me understand that some things I experience are shared by many others, and that exploring how my mind works is a worthwhile journey.\n\n`;
+  }
+  letter+=`This is not a diagnosis. It is a starting point for understanding myself better. I may decide to follow up with a professional, and I may not. Either way, it helped to look at these patterns honestly.\n\nThank you for being someone I can share this with.`;
+  return letter;
+}
+
+/* ── LLM EXPORT ── */
+function generateLLMExport(scores,feedback,resonated){
+  const D=Object.keys(DOMAINS),date=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  const above=D.filter(d=>feedback[d].level==='above'),mod=D.filter(d=>feedback[d].level==='moderate');
+  let md=`# Mosaic Mind — Neurodivergence Self-Discovery Results\n**Date:** ${date}\n\n---\n\n`;
+  md+=`## Context for AI Assistant\n\nThis document contains results from a multi-domain neurodivergence self-assessment using validated screening instruments. The person sharing this may want help:\n- Understanding what these results mean for daily life\n- Exploring strategies for their specific profile\n- Preparing for a professional conversation\n- Learning how their traits interact\n\nPlease be supportive, concrete, and strengths-aware. Frame neurodivergence as difference, not deficit.\n\n---\n\n`;
+  md+=`## Scores Summary\n\n| Domain | Score | Max | Threshold | Level |\n|--------|-------|-----|-----------|-------|\n`;
+  D.forEach(d=>{const dom=DOMAINS[d];const lvl=feedback[d].level==='above'?'⚠️ ABOVE':feedback[d].level==='moderate'?'➡️ Moderate':'✅ Below';md+=`| ${dom.label} | ${scores[d]} | ${dom.maxScore} | ${dom.threshold} | ${lvl} |\n`});
+  md+=`\n`;
+  if(above.length>0){md+=`## Areas Above Screening Threshold\n\n`;above.forEach(d=>{const fb=feedback[d];const dom=DOMAINS[d];md+=`### ${dom.icon} ${dom.label} (${scores[d]}/${dom.maxScore})\n\n**What is ${dom.label}?** ${dom.description} ${dom.prevalence}\n\n**Interpretation:** ${fb.summary}\n\n**Strengths:** ${fb.strengths.join('; ')}\n\n**Next steps:** ${fb.actions.join(' | ')}\n\n`})}
+  if(mod.length>0){md+=`## Areas at Moderate Level\n\n`;mod.forEach(d=>{const dom=DOMAINS[d];md+=`### ${dom.icon} ${dom.label} (${scores[d]}/${dom.maxScore})\n\n**What is ${dom.label}?** ${dom.description}\n\n${feedback[d].summary}\n\n`})}
+  if(above.length===0){
+    md+=`## No Areas Above Screening Threshold\n\n`;
+    md+=`This person's scores did not cross any screening thresholds, but they took this assessment for a reason. When helping them, please:\n`;
+    md+=`- Validate that their experience is real even if these screeners did not capture it strongly\n`;
+    md+=`- Explore whether masking, compensation, or situational factors may have affected their scores\n`;
+    if(mod.length>0) md+=`- Pay special attention to their moderate areas (${mod.map(d=>DOMAINS[d].label).join(', ')}), which may warrant professional exploration\n`;
+    md+=`- Consider alternative explanations: burnout, chronic stress, anxiety/depression, complex trauma (CPTSD), giftedness ("twice exceptional"), sleep disorders, or hormonal changes\n`;
+    md+=`- Suggest practical strategies (external systems, sensory adjustments, structured routines) that can help regardless of diagnosis\n`;
+    md+=`- Encourage them to track patterns in energy, focus, and comfort over time\n\n`;
+  }
+  if(resonated.length>0){md+=`---\n\n## Questions That Personally Resonated\n\nThe person flagged these specific questions as particularly meaningful to their experience:\n\n`;resonated.forEach(i=>{const q=QUESTIONS[i];md+=`- "${q.text}" (${SECTIONS[q.section].label})\n`});md+=`\nThese "resonance markers" may be especially useful for understanding their lived experience beyond the scores.\n\n`}
+  md+=`---\n\n## Screening Instruments Used\n\n`;D.forEach(d=>{md+=`- **${DOMAINS[d].label}:** ${DOMAINS[d].source} (${DOMAINS[d].maxScore} items, threshold: ${DOMAINS[d].threshold})\n`});
+  md+=`\nNote: 6 questions score into multiple domains where instruments overlap. All instrument scoring is preserved.\n`;
+  md+=`\n---\n\n## Disclaimer\n\nThis is an experimental self-exploration tool designed for adults, NOT a clinical assessment. Not suitable for children or adolescents. Results do not constitute diagnosis or medical advice.\n\nConceived & developed by Babu George (linkedin.com/in/beingbabu)\n`;
+  return md;
+}
+
+/* ── PDF ── */
+function generatePDF(scores,feedback,coOccurrences,resonated){
+  const{jsPDF}=window.jspdf;const doc=new jsPDF({unit:'mm',format:'a4'});
+  const W=doc.internal.pageSize.getWidth(),m=18,u=W-2*m;let y=20;
+  function chk(n){if(y+n>275){doc.addPage();y=20}}
+  function wrap(t,x,mw,lh){doc.splitTextToSize(t,mw).forEach(l=>{chk(lh);doc.text(l,x,y);y+=lh})}
+
+  doc.setFont('helvetica','bold');doc.setFontSize(22);doc.setTextColor(45,74,62);doc.text('Mosaic Mind',m,y);y+=8;
+  doc.setFont('helvetica','normal');doc.setFontSize(10);doc.setTextColor(100);doc.text('Neurodivergence Self-Discovery Report',m,y);y+=5;
+  doc.text('Generated: '+new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}),m,y);y+=3;
+  doc.setDrawColor(183,201,168);doc.setLineWidth(0.5);doc.line(m,y,W-m,y);y+=8;
+  doc.setFontSize(7.5);doc.setTextColor(140,120,100);
+  wrap('IMPORTANT: This is an experimental self-exploration tool designed for adults. Not suitable for children or adolescents. Results do not constitute diagnosis or professional advice. See full disclaimer at end.',m,u,3.2);y+=6;
+
+  const D=['autism','adhd','sensory','dyslexia','dyscalculia','dyspraxia','execfn'];
+  D.forEach(domId=>{
+    const d=DOMAINS[domId],fb=feedback[domId],sc=scores[domId];chk(55);
+    doc.setFont('helvetica','bold');doc.setFontSize(12);doc.setTextColor(45,74,62);doc.text(d.label,m,y);y+=5.5;
+    // Description
+    doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(90,80,75);
+    wrap(d.description,m,u,3.5);y+=1;
+    doc.setFont('helvetica','italic');doc.setFontSize(7.5);doc.setTextColor(120,110,100);
+    wrap(d.prevalence,m,u,3.2);y+=4;
+    // Score
+    doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(60);
+    const lt=fb.level==='above'?'ABOVE THRESHOLD':fb.level==='moderate'?'MODERATE':'BELOW THRESHOLD';
+    doc.text(`Score: ${sc}/${d.maxScore}  (Threshold: ${d.threshold})  —  ${lt}`,m,y);y+=6;
+    const bw=u*0.55,bh=3.5;doc.setFillColor(255,232,214);doc.roundedRect(m,y,bw,bh,1.5,1.5,'F');
+    const fw=(sc/d.maxScore)*bw;
+    if(fb.level==='above')doc.setFillColor(122,155,104);else if(fb.level==='moderate')doc.setFillColor(201,169,110);else doc.setFillColor(183,201,168);
+    doc.roundedRect(m,y,Math.max(fw,1),bh,1.5,1.5,'F');
+    const tx=m+(d.threshold/d.maxScore)*bw;doc.setDrawColor(196,112,75);doc.setLineWidth(0.3);doc.line(tx,y-1,tx,y+bh+1);y+=bh+5;
+    doc.setFont('helvetica','bold');doc.setFontSize(9.5);doc.setTextColor(45,74,62);doc.text(fb.heading,m,y);y+=4.5;
+    doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(80,70,65);wrap(fb.summary,m,u,3.8);y+=2;
+    chk(8);doc.setFont('helvetica','bold');doc.setFontSize(8.5);doc.setTextColor(155,130,70);doc.text('Strengths:',m,y);y+=3.5;
+    doc.setFont('helvetica','normal');doc.setTextColor(80,70,65);fb.strengths.forEach(s=>{wrap('• '+s,m+2,u-4,3.5);y+=0.5});y+=1.5;
+    chk(8);doc.setFont('helvetica','bold');doc.setTextColor(130,100,150);doc.text('Next steps:',m,y);y+=3.5;
+    doc.setFont('helvetica','normal');doc.setTextColor(80,70,65);fb.actions.forEach(a=>{wrap('• '+a,m+2,u-4,3.5);y+=0.5});y+=3;
+    doc.setDrawColor(220);doc.setLineWidth(0.15);chk(3);doc.line(m,y,W-m,y);y+=6;
+  });
+
+  // Resonated questions
+  if(resonated.length>0){
+    chk(25);doc.setFont('helvetica','bold');doc.setFontSize(11);doc.setTextColor(45,74,62);
+    doc.text('Questions That Resonated With You',m,y);y+=5;
+    doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.setTextColor(100);
+    doc.text('You flagged these items as particularly meaningful to your experience:',m,y);y+=5;
+    doc.setFontSize(8);doc.setTextColor(80,70,65);
+    resonated.forEach(i=>{const q=QUESTIONS[i];chk(6);wrap('♥ '+q.text+' ('+SECTIONS[q.section].label+')',m,u,3.5);y+=2});y+=4;
+  }
+
+  if(coOccurrences.length>0){chk(30);doc.setFont('helvetica','bold');doc.setFontSize(11);doc.setTextColor(45,74,62);doc.text('How Your Traits Interact',m,y);y+=6;coOccurrences.forEach(co=>{chk(18);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(92,64,51);doc.text(co.title,m,y);y+=4;doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(80,70,65);wrap(co.text,m,u,3.5);y+=4});y+=4}
+
+  // If no areas above threshold, add guidance
+  const aboveInPDF = D.filter(d=>feedback[d].level==='above');
+  const modInPDF = D.filter(d=>feedback[d].level==='moderate');
+  if(aboveInPDF.length===0){
+    chk(50);
+    doc.setFont('helvetica','bold');doc.setFontSize(12);doc.setTextColor(45,74,62);
+    doc.text('Your Scores Did Not Cross Any Screening Thresholds',m,y);y+=6;
+
+    doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(80,70,65);
+    wrap('You came here for a reason, and the fact that these screeners did not flag strong patterns does not mean your experience is not real. Self-report tools are starting points, not final answers. They can miss people who have developed strong coping strategies, whose traits sit just below threshold, or whose difficulties show up mainly under stress or fatigue. Your lived experience is valid data too.',m,u,3.8);y+=4;
+
+    if(modInPDF.length>0){
+      chk(12);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(155,130,70);
+      doc.text('Your moderate areas:',m,y);y+=4;
+      doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(80,70,65);
+      wrap('You scored in the moderate range for '+modInPDF.map(d=>DOMAINS[d].label).join(', ')+'. Many people with formally diagnosed conditions initially score in the moderate range on self-report tools, particularly if they have strong coping mechanisms. A professional conversation could still be worthwhile.',m,u,3.5);y+=4;
+    }
+
+    chk(30);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(130,100,150);
+    doc.text('Other possibilities worth exploring:',m,y);y+=4;
+    doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(80,70,65);
+    const alts = [
+      'Burnout and chronic stress can mimic ADHD and executive function difficulties.',
+      'Anxiety and depression affect concentration, energy, memory, and social comfort in overlapping ways.',
+      'Complex trauma (CPTSD) can produce sensory sensitivity, social difficulties, and executive function challenges.',
+      'Giftedness, especially combined with another condition ("twice exceptional"), can mask underlying difficulties.',
+      'Sleep disorders such as sleep apnea profoundly affect attention, memory, and coordination.',
+      'Hormonal changes (perimenopause, thyroid conditions) can trigger cognitive and mood difficulties.'
+    ];
+    alts.forEach(a=>{wrap('• '+a,m+2,u-4,3.5);y+=1});y+=3;
+
+    chk(15);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(92,64,51);
+    doc.text('What you can still do:',m,y);y+=4;
+    doc.setFont('helvetica','normal');doc.setTextColor(80,70,65);
+    const todos = [
+      'Talk to your doctor. Share that you have been exploring this. A good clinician will take it seriously.',
+      'Try the strategies anyway. External reminders, sensory adjustments, and structured routines help everyone.',
+      'Keep observing. A journal of what drains and what helps can be more revealing than any questionnaire.',
+      'Come back later. Your answers may be different under different life circumstances.'
+    ];
+    todos.forEach(t=>{wrap('• '+t,m+2,u-4,3.5);y+=1});y+=4;
+  }
+
+  // Instruments
+  chk(40);doc.setFont('helvetica','bold');doc.setFontSize(11);doc.setTextColor(45,74,62);doc.text('Screening Instruments Used',m,y);y+=6;
+  doc.setFontSize(8);doc.setTextColor(80,70,65);
+  D.forEach(domId=>{const d=DOMAINS[domId];chk(6);doc.setFont('helvetica','bold');doc.text(d.label+':',m,y);const lw=doc.getTextWidth(d.label+': ');doc.setFont('helvetica','normal');doc.text(d.source,m+lw,y);y+=4.5});y+=3;
+  chk(10);doc.setFont('helvetica','italic');doc.setFontSize(7);doc.setTextColor(120,110,100);
+  wrap('Methodology note: 6 questions score into multiple domains where instruments share overlapping constructs. All instrument scoring is preserved.',m,u,3);
+
+  y+=4;chk(15);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(45,74,62);doc.text('Conceived & Developed by Babu George',m,y);y+=4;
+  doc.setFont('helvetica','normal');doc.setTextColor(122,155,104);doc.textWithLink('linkedin.com/in/beingbabu',m,y,{url:'https://linkedin.com/in/beingbabu'});y+=8;
+
+  chk(35);doc.setDrawColor(196,112,75);doc.setLineWidth(0.3);doc.line(m,y,W-m,y);y+=4;
+  doc.setFont('helvetica','bold');doc.setFontSize(7.5);doc.setTextColor(140,100,70);doc.text('LEGAL DISCLAIMER',m,y);y+=3.5;
+  doc.setFont('helvetica','normal');doc.setFontSize(6.5);doc.setTextColor(120,110,100);
+  wrap('This instrument is an experimental self-exploration tool designed for adults and provided for informational and educational purposes only. It is not suitable for use with children or adolescents; if you are concerned about a young person, please consult a paediatrician or child psychologist. This tool is NOT a medical device, diagnostic instrument, or clinical assessment. Results do not constitute medical diagnosis, psychological evaluation, clinical opinion, or professional advice of any kind. Not intended to replace professional consultation, diagnosis, or treatment. No provider-patient relationship is created. The developers (including Babu George) disclaim all liability for damages arising from use of or reliance upon this tool, to the fullest extent permitted by law. By using this tool you acknowledge you do so at your own risk and will not rely on results as a substitute for professional evaluation.',m,u,2.8);
+  doc.save('Mosaic-Mind-Report.pdf');
+}
+
+/* ── RADAR CHART ── */
+function RadarChart({scores}){
+  const D=['autism','adhd','sensory','dyslexia','dyscalculia','dyspraxia','execfn'];
+  const n=D.length,cx=190,cy=175,R=130,step=(2*Math.PI)/n,start=-Math.PI/2;
+  function pol(i,r){const a=start+i*step;return[cx+r*Math.cos(a),cy+r*Math.sin(a)]}
+  const rings=[0.25,0.5,0.75,1.0].map(f=>{const pts=D.map((_,i)=>pol(i,R*f).join(',')).join(' ');return<polygon key={f} points={pts} fill="none" stroke="var(--border)" strokeWidth="0.8"/>});
+  const axes=D.map((_,i)=>{const[x,y]=pol(i,R);return<line key={i} x1={cx} y1={cy} x2={x} y2={y} stroke="var(--border)" strokeWidth="0.6"/>});
+  const thPts=D.map((d,i)=>pol(i,R*(DOMAINS[d].threshold/DOMAINS[d].maxScore)).join(',')).join(' ');
+  const sPts=D.map((d,i)=>pol(i,R*Math.min(scores[d]/DOMAINS[d].maxScore,1)).join(',')).join(' ');
+  const labels=D.map((d,i)=>{const[x,y]=pol(i,R+22);const dom=DOMAINS[d];const pct=scores[d]/dom.maxScore;const col=pct>=dom.threshold/dom.maxScore?'#C4704B':'var(--txt3)';const fw=pct>=dom.threshold/dom.maxScore?'600':'400';return<text key={d} x={x} y={y} textAnchor="middle" dominantBaseline="middle" fontSize="11" fill={col} fontWeight={fw} fontFamily="DM Sans,sans-serif">{dom.icon} {dom.label.split('/')[0].split('(')[0].trim()}</text>});
+  return(<div className="radar-wrap"><svg viewBox="0 0 380 360">{rings}{axes}<polygon points={thPts} fill="none" stroke="#C4704B" strokeWidth="1.2" strokeDasharray="4,3" opacity="0.5"/><polygon points={sPts} fill="rgba(122,155,104,0.2)" stroke="#7A9B68" strokeWidth="2.2"/>{D.map((d,i)=>{const f=Math.min(scores[d]/DOMAINS[d].maxScore,1);const[x,y]=pol(i,R*f);return<circle key={d} cx={x} cy={y} r="4.5" fill="#7A9B68" stroke="white" strokeWidth="1.5"/>})}{labels}</svg><p style={{fontSize:'0.8rem',color:'var(--txt3)',marginTop:'4px'}}>Green area = your profile · Dashed line = screening thresholds</p></div>);
+}
+
+/* ================================================================
+   REACT APP
+   ================================================================ */
+function encodeResume(answers,resonated,aboutYou){try{return btoa(JSON.stringify({a:answers,r:[...resonated],y:aboutYou||{}}))}catch(e){return null}}
+function decodeResume(code){try{const d=JSON.parse(atob(code));return{answers:d.a,resonated:new Set(d.r||[]),aboutYou:d.y||{}}}catch(e){return null}}
+function encodeScoresToHash(scores){const D=Object.keys(DOMAINS);return'#r='+btoa(D.map(d=>scores[d]||0).join(','))}
+
+const{useState,useMemo,useCallback,useRef,useEffect}=React;
+
+function App(){
+  const[screen,setScreen]=useState('welcome');
+  const[qi,setQi]=useState(0);
+  const[answers,setAnswers]=useState(new Array(QUESTIONS.length).fill(null));
+  const[resonated,setResonated]=useState(new Set());
+  const[dark,setDark]=useState(false);
+  const[aboutYou,setAboutYou]=useState({});
+  const[resumeInput,setResumeInput]=useState('');
+  const[resumeMsg,setResumeMsg]=useState('');
+  const[urlCopied,setUrlCopied]=useState(false);
+  const[dyslexiaMode,setDyslexiaMode]=useState(false);
+  const[showTransition,setShowTransition]=useState(null);
+  const[skipTransitions,setSkipTransitions]=useState(false);
+  const[letterCopied,setLetterCopied]=useState(false);
+  const[startTime]=useState(Date.now());
+  const autoTimer=useRef(null);
+  const totalQ=QUESTIONS.length;
+
+  useEffect(()=>{return()=>{if(autoTimer.current)clearTimeout(autoTimer.current)}},[qi]);
+
+  // Beforeunload warning during assessment
+  useEffect(()=>{
+    const handler=(e)=>{if(screen==='assess'&&answers.some(a=>a!==null)){e.preventDefault();e.returnValue=''}};
+    window.addEventListener('beforeunload',handler);
+    return()=>window.removeEventListener('beforeunload',handler);
+  },[screen,answers]);
+
+  // Keyboard shortcuts for answer selection
+  useEffect(()=>{
+    if(screen!=='assess'||showTransition)return;
+    const opts=SCALES[QUESTIONS[qi].scale];
+    const handler=(e)=>{
+      const num=parseInt(e.key);
+      if(num>=1&&num<=opts.length){
+        selectAnswer(opts[num-1].value);
+      }
+    };
+    window.addEventListener('keydown',handler);
+    return()=>window.removeEventListener('keydown',handler);
+  },[screen,qi,showTransition]);
+
+  const toggleTheme=useCallback(()=>{setDark(p=>{document.documentElement.setAttribute('data-theme',!p?'dark':'light');return!p})},[]);
+  const toggleDyslexia=useCallback(()=>{setDyslexiaMode(p=>{document.documentElement.setAttribute('data-dyslexia',!p?'true':'false');return!p})},[]);
+
+  // Time estimate
+  const answeredCount=useMemo(()=>answers.filter(a=>a!==null).length,[answers]);
+  const timeEstimate=useMemo(()=>{
+    if(answeredCount<3)return 'About 10 minutes remaining';
+    const elapsed=(Date.now()-startTime)/1000;
+    const perQ=elapsed/answeredCount;
+    const remaining=Math.ceil((totalQ-qi-1)*perQ/60);
+    if(remaining<=1)return 'Almost done';
+    return `About ${remaining} minute${remaining>1?'s':''} remaining`;
+  },[answeredCount,qi,totalQ,startTime]);
+
+  // Determine section boundaries
+  const sectionOrder=useMemo(()=>{
+    const seen=[];
+    QUESTIONS.forEach(q=>{if(!seen.includes(q.section))seen.push(q.section)});
+    return seen;
+  },[]);
+
+  const sectionStartIndices=useMemo(()=>{
+    const m={};QUESTIONS.forEach((q,i)=>{if(!(q.section in m))m[q.section]=i});return m;
+  },[]);
+
+  const goToQuestion=useCallback((idx)=>{
+    if(idx>0 && idx<totalQ && !skipTransitions){
+      const prevSection=QUESTIONS[idx-1].section;
+      const nextSection=QUESTIONS[idx].section;
+      if(prevSection!==nextSection){
+        setShowTransition(nextSection);
+        return;
+      }
+    }
+    setQi(idx);
+  },[totalQ,skipTransitions]);
+
+  const selectAnswer=useCallback((val)=>{
+    setAnswers(p=>{const a=[...p];a[qi]=val;return a});
+    if(autoTimer.current)clearTimeout(autoTimer.current);
+    if(qi<totalQ-1){autoTimer.current=setTimeout(()=>{goToQuestion(qi+1)},350)}
+  },[qi,totalQ,goToQuestion]);
+
+  const goNext=useCallback(()=>{qi<totalQ-1?goToQuestion(qi+1):setScreen('results')},[qi,totalQ,goToQuestion]);
+  const goPrev=useCallback(()=>{if(qi>0)setQi(qi-1)},[qi]);
+
+  const toggleResonate=useCallback(()=>{setResonated(p=>{const n=new Set(p);if(n.has(qi))n.delete(qi);else n.add(qi);return n})},[qi]);
+
+  const dismissTransition=useCallback(()=>{
+    const idx=sectionStartIndices[showTransition];
+    setShowTransition(null);
+    setQi(idx);
+  },[showTransition,sectionStartIndices]);
+
+  const restart=useCallback(()=>{setScreen('welcome');setQi(0);setAnswers(new Array(QUESTIONS.length).fill(null));setResonated(new Set());setShowTransition(null)},[]);
+
+  const scores=useMemo(()=>screen==='results'?computeScores(answers):{},[screen,answers]);
+  const allFeedback=useMemo(()=>{if(screen!=='results')return{};const fb={};Object.keys(DOMAINS).forEach(d=>fb[d]=getFeedback(d,scores[d]));return fb},[screen,scores]);
+  const coOccurrences=useMemo(()=>screen==='results'?getCoOccurrences(allFeedback):[],[screen,allFeedback]);
+  const sortedDomains=useMemo(()=>{if(screen!=='results')return[];const o={above:0,moderate:1,low:2};return Object.keys(DOMAINS).sort((a,b)=>o[allFeedback[a].level]-o[allFeedback[b].level])},[screen,allFeedback]);
+  const aboveCount=useMemo(()=>sortedDomains.filter(d=>allFeedback[d].level==='above').length,[sortedDomains,allFeedback]);
+  const resonatedArr=useMemo(()=>[...resonated].sort((a,b)=>a-b),[resonated]);
+
+  const shareLetter=useMemo(()=>screen==='results'?generateShareLetter(allFeedback,scores):'',[screen,allFeedback,scores]);
+
+  const downloadLLM=useCallback(()=>{
+    const md=generateLLMExport(scores,allFeedback,resonatedArr);
+    const b=new Blob([md],{type:'text/markdown'});const u=URL.createObjectURL(b);
+    const a=document.createElement('a');a.href=u;a.download='Mosaic-Mind-Results-for-AI.md';a.click();URL.revokeObjectURL(u);
+  },[scores,allFeedback,resonatedArr]);
+
+  const copyLetter=useCallback(()=>{navigator.clipboard.writeText(shareLetter);setLetterCopied(true);setTimeout(()=>setLetterCopied(false),2000)},[shareLetter]);
+
+  const q=QUESTIONS[qi];
+  const section=q?SECTIONS[q.section]:null;
+  const options=q?SCALES[q.scale]:[];
+
+  /* ──── WELCOME ──── */
+  if(screen==='welcome'){
+    return(
+    <div className="app">
+      <div className="toolbar"><button className="tool-btn" onClick={toggleTheme} title="Dark mode">{dark?'☀️':'🌙'}</button><button className={`tool-btn ${dyslexiaMode?'active':''}`} onClick={toggleDyslexia} title="Dyslexia-friendly text">Aa</button></div>
+      <div className="brand"><div className="brand-icon">✦</div><h1>Mosaic Mind<span>Neurodivergence Self-Discovery</span></h1></div>
+      <div className="welcome-text">
+        <p>Maybe you have always felt like you were working harder than everyone else to keep up. Maybe you were told you were "too sensitive," "too distracted," or "just not trying hard enough." Maybe you developed workarounds so effective that nobody, including you, noticed what was underneath.</p>
+        <p style={{marginTop:'12px'}}>This tool is a <span className="hl">gentle, comprehensive starting point</span> for understanding your own mind. It covers seven areas of neurodivergence in a single flow, so you do not have to guess which one applies to you. Your results will show whichever patterns emerge, with strengths to recognize and concrete steps forward.</p>
+      </div>
+
+      <div className="recog-quotes">
+        <p className="recog-q" style={{animationDelay:'0.3s'}}>"I always thought I was just bad at being an adult."</p>
+        <p className="recog-q" style={{animationDelay:'0.7s'}}>"Finding out at 40 was like getting the user manual for a brain I'd been operating without one."</p>
+        <p className="recog-q" style={{animationDelay:'1.1s'}}>"It wasn't laziness. It was never laziness."</p>
+      </div>
+
+      <div className="disc-box">
+        <p><strong>Before you begin:</strong> This tool draws on scientifically validated screening instruments adapted for self-exploration. It is <strong>not</strong> a substitute for professional diagnosis. A high score means "this is worth exploring further," not "something is wrong with you." There is nothing wrong with you.</p>
+        <p style={{marginTop:'10px'}}><strong>Please note:</strong> The instruments used here were developed for and validated with adult populations. This tool is not designed for children or young adolescents. If you are concerned about a young person, please consult a paediatrician, child psychologist, or school-based specialist who can use age-appropriate assessments.</p>
+      </div>
+
+      <div style={{textAlign:'center',marginBottom:'18px'}}>
+        <p style={{fontSize:'0.92rem',color:'var(--txt3)',marginBottom:'10px'}}><strong style={{color:'var(--forest)'}}>{totalQ} questions</strong> across 10 areas · about 12 to 15 minutes</p>
+        <div style={{display:'flex',flexWrap:'wrap',gap:'7px',justifyContent:'center',margin:'12px 0'}}>
+          {Object.values(DOMAINS).map(d=><span key={d.label} style={{display:'inline-flex',alignItems:'center',gap:'4px',padding:'4px 10px',borderRadius:'20px',fontSize:'0.8rem',background:'var(--card)',border:'1px solid var(--border)',color:'var(--txt2)'}}>{d.icon} {d.label.split('/')[0].split('(')[0].trim()}</span>)}
+        </div>
+      </div>
+
+      <div className="btn-row"><button className="btn btn-p" onClick={()=>setScreen('about')}>Begin the exploration →</button></div>
+      <div className="rbar">
+          <span style={{fontSize:'.85rem',color:'var(--txt3)'}}>Have a resume code?</span>
+          <input value={resumeInput} onChange={e=>setResumeInput(e.target.value)} placeholder="Paste code here"/>
+          <button className="sbtn pr" onClick={()=>{const d=decodeResume(resumeInput);if(d){setAnswers(d.answers);setResonated(d.resonated);setAboutYou(d.aboutYou);const fi=d.answers.findIndex(a=>a===null);setQi(fi>=0?fi:0);setScreen('assess');setResumeMsg('Restored!')}else{setResumeMsg('Invalid code.')}}}>Resume</button>
+        </div>
+        {resumeMsg&&<p style={{textAlign:'center',fontSize:'.82rem',marginTop:'6px',color:resumeMsg.includes('Invalid')?'var(--terra)':'var(--deep-sage)'}}>{resumeMsg}</p>}
+      <div className="credits" style={{marginTop:'40px'}}><p>Conceived &amp; developed by <a href="https://linkedin.com/in/beingbabu" target="_blank" rel="noopener noreferrer">Babu George</a></p></div>
+    </div>);
+  }
+
+  /* ──── ABOUT YOU ──── */
+  if(screen==='about'){
+    return(
+    <div className="app">
+      <div className="toolbar"><button className="tool-btn" onClick={toggleTheme} title="Dark mode">{dark?'\u2600\uFE0F':'\u{1F319}'}</button><button className={"tool-btn "+(dyslexiaMode?'active':'')} onClick={toggleDyslexia} title="Dyslexia-friendly">Aa</button></div>
+      <div className="card" style={{animation:'fadeUp .4s ease-out'}}>
+        <h2 style={{marginBottom:'6px'}}>A little about you</h2>
+        <p style={{marginBottom:'20px',fontSize:'.9rem'}}>Optional. Does not affect scores. Helps tailor your interpretation.</p>
+        <div className="abg"><label>Age range</label><div className="abo">
+          {['Under 20','20s','30s','40s','50s','60+'].map(a=><button key={a} className={'abi '+(aboutYou.age===a?'sel':'')} onClick={()=>setAboutYou(p=>({...p,age:a}))}>{a}</button>)}
+        </div></div>
+        <div className="abg"><label>How do you identify?</label><div className="abo">
+          {['Woman','Man','Non-binary','Prefer not to say'].map(g=><button key={g} className={'abi '+(aboutYou.gender===g?'sel':'')} onClick={()=>setAboutYou(p=>({...p,gender:g}))}>{g}</button>)}
+        </div></div>
+        <div className="abg"><label>Have you been evaluated for a neurodevelopmental condition?</label><div className="abo">
+          {['Yes, diagnosed','Yes, not diagnosed','No, never','Not sure'].map(e=><button key={e} className={'abi '+(aboutYou.eval===e?'sel':'')} onClick={()=>setAboutYou(p=>({...p,eval:e}))}>{e}</button>)}
+        </div></div>
+        <div className="brow">
+          <button className="btn bs" onClick={()=>setScreen('assess')}>Skip this</button>
+          <button className="btn bp" onClick={()=>setScreen('assess')}>Continue</button>
+        </div>
+      </div>
+    </div>);
+  }
+
+  /* ──── SECTION TRANSITION ──── */
+  if(showTransition){
+    const st=SECTIONS[showTransition].transition;
+    return(
+    <div className="app">
+      <div className="toolbar"><button className="tool-btn" onClick={toggleTheme} title="Dark mode">{dark?'☀️':'🌙'}</button><button className={`tool-btn ${dyslexiaMode?'active':''}`} onClick={toggleDyslexia} title="Dyslexia-friendly text">Aa</button></div>
+      <div className="card section-transition">
+        <div className="st-icon">{st.icon}</div>
+        <h2>{st.heading}</h2>
+        <p>{st.body}</p>
+        <div className="st-cta">
+          <button className="btn btn-p" onClick={dismissTransition}>Continue →</button>
+          <br/>
+          <button className="skip-link" onClick={()=>{setSkipTransitions(true);dismissTransition()}}>Skip section intros from now on</button>
+        </div>
+      </div>
+    </div>);
+  }
+
+  /* ──── ASSESSMENT ──── */
+  if(screen==='assess'){
+    const isFirst=qi===0,isLast=qi===totalQ-1,sv=answers[qi];
+    return(
+    <div className="app">
+      <div className="toolbar"><button className="tool-btn" onClick={toggleTheme} title="Dark mode">{dark?'☀️':'🌙'}</button><button className={`tool-btn ${dyslexiaMode?'active':''}`} onClick={toggleDyslexia} title="Dyslexia-friendly text">Aa</button></div>
+      <div className="prog-wrap">
+        <div className="prog-top"><span className="sec-label" style={{color:section.color}}>{section.label}</span><span>{qi+1} of {totalQ}</span></div>
+        <div className="prog-bar"><div className="prog-fill" style={{width:`${((qi+1)/totalQ)*100}%`}}></div></div>
+        <div className="time-est">{timeEstimate}</div>
+      </div>
+      <div className="card qc" key={qi}>
+        <span className="q-tag" style={{background:section.bg,color:section.color}}>{section.label}</span>
+        {q.consolidated&&<span className="q-multi-tag">Multi-domain</span>}
+        <div className="q-num">Question {qi+1} of {totalQ}</div>
+        <div className="q-text">{q.text}</div>
+        <div className="opts">
+          {options.map((opt,oi)=><button key={opt.value} className={`opt ${sv===opt.value?'sel':''}`} onClick={()=>selectAnswer(opt.value)}>{opt.label}<span className="kbd-hint">{oi+1}</span></button>)}
+        </div>
+        <div className="q-footer">
+          <button className={`resonate-btn ${resonated.has(qi)?'active':''}`} onClick={toggleResonate}>
+            <span className="heart">{resonated.has(qi)?'♥':'♡'}</span> This resonates with me
+          </button>
+          <div className="qnav">
+            <button className="nb nb-prev" onClick={goPrev} disabled={isFirst}>← Back</button>
+            {isLast?<button className="nb nb-next" onClick={()=>setScreen('review')} disabled={sv===null}>Review answers</button>
+            :<span className="q-hint">{sv!==null?'':'Select an answer'}</span>}
+          </div>
+        </div>
+      </div>
+    </div>);
+  }
+
+  /* ──── REVIEW ──── */
+  if(screen==='review'){
+    const unanswered=answers.filter(a=>a===null).length;
+    return(
+    <div className="app">
+      <div className="toolbar"><button className="tool-btn" onClick={toggleTheme}>{dark?'\u2600\uFE0F':'\u{1F319}'}</button><button className={"tool-btn "+(dyslexiaMode?'active':'')} onClick={toggleDyslexia}>Aa</button></div>
+      <div className="card" style={{animation:'fadeUp .4s ease-out'}}>
+        <h2 style={{marginBottom:'6px'}}>Review your answers</h2>
+        <p style={{marginBottom:'8px',fontSize:'.9rem'}}>Tap any number to revisit. {resonated.size>0&&'\u2665 = resonated.'} {unanswered>0&&<span style={{color:'var(--terra)'}}>{unanswered} unanswered.</span>}</p>
+        {sectionOrder.map(sid=>{
+          const qs=QUESTIONS.map((q,i)=>({...q,idx:i})).filter(q=>q.section===sid);
+          if(!qs.length)return null;
+          return(<div key={sid}>
+            <div className="rvsl" style={{color:SECTIONS[sid].color}}>{SECTIONS[sid].label}</div>
+            <div className="rvg">{qs.map(q=>{
+              const a=answers[q.idx]!==null,f=resonated.has(q.idx);
+              return <button key={q.idx} className={'rvd '+(a?'ans':'un')+(f?' fl':'')}
+                onClick={()=>{setQi(q.idx);setScreen('assess')}} title={q.text.substring(0,60)+'...'}>{q.idx+1}</button>
+            })}</div>
+          </div>);
+        })}
+        <div style={{marginTop:'16px',padding:'12px 16px',background:'rgba(201,169,110,.06)',borderRadius:'var(--rs)',border:'1px solid rgba(201,169,110,.15)'}}>
+          <p style={{fontSize:'.85rem',color:'var(--txt3)'}}>Save progress:
+            <button className="sbtn" style={{marginLeft:'8px'}} onClick={()=>{const c=encodeResume(answers,[...resonated],aboutYou);if(c){navigator.clipboard.writeText(c);setResumeMsg('Resume code copied!')}}}>Copy resume code</button>
+          </p>
+          {resumeMsg&&<p style={{fontSize:'.8rem',marginTop:'4px',color:'var(--deep-sage)'}}>{resumeMsg}</p>}
+        </div>
+        <div className="brow">
+          <button className="btn bs" onClick={()=>{setQi(0);setScreen('assess')}}>Back to questions</button>
+          <button className="btn bp" onClick={()=>setScreen('results')}>See my results</button>
+        </div>
+      </div>
+    </div>);
+  }
+
+  /* ──── RESULTS ──── */
+  if(screen==='results'){
+    const phq2=scores.mood_phq||0,gad2=scores.mood_gad||0,moodConcern=phq2>=3||gad2>=3;
+    const aboveDoms=sortedDomains.filter(d=>allFeedback[d].level==='above');
+    const startHereDom=aboveDoms.length>=2?aboveDoms.reduce((best,d)=>(scores[d]/DOMAINS[d].maxScore)>(scores[best]/DOMAINS[best].maxScore)?d:best):null;
+    const barC={above:'linear-gradient(90deg,#B7C9A8,#7A9B68)',moderate:'linear-gradient(90deg,#C9A96E,#D4956A)',low:'linear-gradient(90deg,#d4d0cb,#C9B8D9)'};
+    const lvlL={above:'Above threshold',moderate:'Moderate',low:'Below threshold'};
+    const lvlC={above:'lvl-a',moderate:'lvl-m',low:'lvl-l'};
+
+    return(
+    <div className="app">
+      <div className="toolbar"><button className="tool-btn" onClick={toggleTheme} title="Dark mode">{dark?'☀️':'🌙'}</button><button className={`tool-btn ${dyslexiaMode?'active':''}`} onClick={toggleDyslexia} title="Dyslexia-friendly text">Aa</button></div>
+      <div className="brand" style={{paddingBottom:'4px'}}><div className="brand-icon">✦</div><h1 style={{fontSize:'clamp(1.5rem,4vw,2.1rem)'}}>Your Results</h1></div>
+      <div className="res-intro"><p>Here is what your responses suggest across all seven areas, presented as a starting point for self-understanding.{aboveCount>0&&` ${aboveCount} area${aboveCount>1?'s':''} scored above the screening threshold.`}</p></div>
+
+      <RadarChart scores={scores}/>
+
+      {startHereDom&&aboveCount>=2&&(
+        <div className="shbox"><h3>Where to start</h3>
+        <p>With {aboveCount} areas above threshold, <strong>{DOMAINS[startHereDom].label}</strong> may be the most impactful to explore first based on your scores.</p></div>
+      )}
+
+      {(phq2>0||gad2>0)&&(
+        <div className={'mcd '+(moodConcern?'cn':'ok')}>
+          <h3>{moodConcern?'Mood and anxiety may be a factor':'Mood check-in'}</h3>
+          {moodConcern?<p>Your PHQ-2 ({phq2}/6) and/or GAD-2 ({gad2}/6) scores suggest current depression or anxiety, which can mimic or amplify neurodivergent traits. Consider discussing mood with a healthcare provider alongside any neurodivergence evaluation.</p>
+          :<p>Your mood scores (PHQ-2: {phq2}/6, GAD-2: {gad2}/6) are below concern thresholds, suggesting your other results are less likely driven by current mood conditions.</p>}
+          <p style={{fontSize:'.82rem',color:'var(--txt3)',marginTop:'8px'}}>Sources: {MOOD_INFO.phq2.source}; {MOOD_INFO.gad2.source}</p>
+        </div>
+      )}
+
+      {allFeedback.masking&&allFeedback.masking.level==='above'&&aboveCount<=3&&(
+        <div className="itp" style={{background:'rgba(184,160,200,.1)',borderLeft:'4px solid #B8A0C8',margin:'0 0 20px'}}>
+          <h4>Important: high masking detected</h4>
+          <p>High masking with relatively few elevated trait scores is a well-recognized pattern. Your screening scores may be artificially low because you suppress the very traits being measured. A formal evaluation that accounts for masking is especially important.</p>
+        </div>
+      )}
+
+      {aboutYou.gender==='Woman'&&aboveCount>0&&(
+        <p style={{fontSize:'.88rem',color:'var(--txt3)',marginBottom:'16px',fontStyle:'italic',textAlign:'center'}}>Research note: Autism and ADHD have historically been underdiagnosed in women, partly because original criteria were based on studies of boys. Women often mask more heavily.</p>
+      )}
+
+      {sortedDomains.map((domId,idx)=>{const d=DOMAINS[domId],fb=allFeedback[domId],sc=scores[domId],pct=(sc/d.maxScore)*100,thPct=(d.threshold/d.maxScore)*100;
+        return(
+        <div key={domId} className="card rcard" style={{animationDelay:`${idx*0.06}s`}}>
+          <div className="rh"><div className="ri" style={{background:d.iconBg}}>{d.icon}</div><div className="rh-text"><h3>{d.label} <span className={`lvl ${lvlC[fb.level]}`}>{lvlL[fb.level]}</span></h3><span>{d.source}</span></div></div>
+          <div className="domain-desc">{d.description}<span className="prevalence">{d.prevalence}</span></div>
+          <div className="svis"><div className="sb-bg"><div className="sb-fill" style={{width:`${pct}%`,background:barC[fb.level]}}></div><div className="sb-th" style={{left:`${thPct}%`}}><div className="sb-thl">Threshold</div></div></div><div className="sb-labels"><span>0</span><span>{d.maxScore}</span></div></div>
+          <div className="score-big"><span className="num">{sc}</span><span className="ctx">out of {d.maxScore} (threshold: {d.threshold})</span></div>
+          <div className="interp sum"><h4>{fb.heading}</h4><p>{fb.summary}</p></div>
+          <div className="interp str"><h4>✦ Strengths to recognize</h4><ul>{fb.strengths.map((s,i)=><li key={i}>{s}</li>)}</ul></div>
+          <div className="interp act"><h4>→ Suggested next steps</h4><ul>{fb.actions.map((a,i)=><li key={i}>{a}</li>)}</ul></div>
+          {fb.resources&&fb.resources.length>0&&<div className="res-section"><h4>📚 Resources</h4>{fb.resources.map((r,i)=><p key={i}>{r}</p>)}</div>}
+        </div>)})}
+
+      {/* Resonance summary */}
+      {resonatedArr.length>0&&(
+        <div className="resonance-card">
+          <h3>♥ Questions That Resonated With You</h3>
+          <p>You flagged {resonatedArr.length} question{resonatedArr.length>1?'s':''} as personally meaningful. These are included in your PDF and AI export, and can be especially valuable if you share your results with a professional.</p>
+          {resonatedArr.map(i=>{const rq=QUESTIONS[i];return(<div key={i} className="resonance-item"><span className="ri-heart">♥</span><div>{rq.text}<span className="ri-section">{SECTIONS[rq.section].label}</span></div></div>)})}
+        </div>)}
+
+      {coOccurrences.length>0&&(<div className="cocard"><h3>🔗 How Your Traits Interact</h3><p style={{marginBottom:'14px',fontSize:'0.9rem'}}>Neurodivergent conditions rarely occur in isolation:</p>{coOccurrences.map((co,i)=><div key={i} className="co-item"><h4>{co.title}</h4><p>{co.text}</p></div>)}</div>)}
+
+      {aboveCount>0&&(
+        <div className="clinician-card">
+          <h3>🩺 Preparing for a Professional Conversation</h3>
+          <p>If you decide to seek a formal evaluation:</p>
+          <ul>
+            <li><strong>Who to see:</strong> A clinical psychologist, psychiatrist, or neuropsychologist experienced with adult neurodivergence. For dyslexia or dyscalculia specifically, an educational psychologist is typically the specialist.</li>
+            <li><strong>What to bring:</strong> Your PDF report from this tool, any school reports from childhood if available, and notes about how these patterns affect your daily life now.</li>
+            <li><strong>What to say:</strong> "I completed a validated screening tool and scored above threshold in [areas]. I would like to explore whether a formal assessment is appropriate."</li>
+            <li><strong>What to expect:</strong> A thorough evaluation typically involves a clinical interview, standardized assessments, and sometimes input from people who know you well.</li>
+            <li><strong>What it costs:</strong> Varies widely. In many places, a referral through a primary care physician can reduce costs. Some employers and universities provide assessment funding.</li>
+          </ul>
+        </div>)}
+
+      {/* Share letter */}
+      {aboveCount>0&&(
+        <div className="letter-card">
+          <h3>💌 Sharing With Someone You Trust</h3>
+          <p>One of the hardest parts of late discovery is telling the people in your life. Here is a letter you can adapt and share:</p>
+          <div className="letter-body">{shareLetter}</div>
+          <div className="letter-actions">
+            <button className="btn btn-s" onClick={copyLetter} style={{fontSize:'0.88rem',padding:'8px 18px'}}>📋 Copy letter</button>
+            {letterCopied&&<span className="letter-copied">Copied!</span>}
+          </div>
+        </div>)}
+
+      {/* Guidance when no areas are above threshold */}
+      {aboveCount===0&&(
+        <div className="card" style={{marginTop:'24px',animation:'fadeUp 0.5s ease-out'}}>
+          <h3 style={{color:'var(--forest)',marginBottom:'14px',fontSize:'1.15rem'}}>Your scores did not cross any screening thresholds. Here is why that still matters.</h3>
+          <p style={{marginBottom:'14px',lineHeight:'1.7'}}>
+            You came here for a reason. Maybe something about daily life feels harder than it should, or you have
+            always sensed that you experience the world a little differently. The fact that these particular screeners
+            did not flag strong patterns does not mean your experience is not real. It means these specific instruments,
+            at this moment, did not capture it. Here are some things worth considering:
+          </p>
+
+          <div className="interp" style={{background:'var(--lt-sage)',marginBottom:'12px'}}>
+            <h4>Screening tools have limits</h4>
+            <p>Self-report screeners are starting points, not final answers. They work well for identifying strong patterns, but they
+            can miss people who have developed effective compensatory strategies (masking), whose traits sit just below threshold,
+            or whose difficulties show up mainly under specific conditions like stress or fatigue. If your lived experience tells
+            you something is there, that experience is valid data too.</p>
+          </div>
+
+          {sortedDomains.filter(d=>allFeedback[d].level==='moderate').length>0&&(
+          <div className="interp" style={{background:'rgba(201,169,110,0.1)',borderLeft:'4px solid var(--gold)',marginBottom:'12px'}}>
+            <h4>Your moderate areas are still worth noting</h4>
+            <p>You scored in the moderate range for {sortedDomains.filter(d=>allFeedback[d].level==='moderate').map(d=>DOMAINS[d].label).join(', ').replace(/, ([^,]*)$/,' and $1')}.
+            These did not cross the screening threshold, but they suggest tendencies worth understanding. Many people with
+            formally diagnosed conditions initially score in the moderate range on self-report tools, particularly if they have
+            strong coping mechanisms. If these areas resonate with your experience, a professional conversation could still be illuminating.</p>
+          </div>)}
+
+          <div className="interp" style={{background:'rgba(201,184,217,0.1)',borderLeft:'4px solid var(--lav)',marginBottom:'12px'}}>
+            <h4>Other possibilities to explore</h4>
+            <p>The seven areas covered here are not the only explanations for feeling out of step. Some other things that can
+            create similar experiences:</p>
+            <ul>
+              <li><strong>Burnout and chronic stress</strong> can mimic ADHD and executive function difficulties. If your struggles
+              are relatively recent or have worsened over time, this is worth exploring with a doctor or therapist.</li>
+              <li><strong>Anxiety and depression</strong> affect concentration, energy, memory, and social comfort in ways that
+              overlap significantly with several neurodivergent profiles.</li>
+              <li><strong>Complex trauma or CPTSD</strong> can produce sensory sensitivity, difficulty reading social cues,
+              emotional dysregulation, and executive function challenges that look very similar to ADHD or autism.</li>
+              <li><strong>Giftedness</strong> (particularly in combination with another condition, sometimes called "twice exceptional")
+              can create a pattern where intellectual ability masks underlying difficulties, leading to a sense of
+              underperformance that is hard to explain.</li>
+              <li><strong>Sleep disorders</strong> such as sleep apnea or delayed sleep phase syndrome can profoundly affect
+              attention, memory, mood, and coordination.</li>
+              <li><strong>Hormonal changes</strong> (including perimenopause and thyroid conditions) can trigger or amplify
+              attention, mood, and cognitive difficulties that may be mistaken for neurodevelopmental conditions, or vice versa.</li>
+            </ul>
+          </div>
+
+          <div className="interp" style={{background:'rgba(255,232,214,0.2)',borderLeft:'4px solid var(--soft-terra)',marginBottom:'12px'}}>
+            <h4>What you can still do with these results</h4>
+            <ul>
+              <li><strong>Talk to your doctor.</strong> Share that you have been experiencing difficulties and explored neurodivergence as a possibility. A good clinician will take that seriously regardless of a screening score.</li>
+              <li><strong>Try the strategies anyway.</strong> Many of the tools recommended for neurodivergent adults (external reminders, sensory adjustments, body doubling, structured routines) help everyone. You do not need a diagnosis to benefit from them.</li>
+              <li><strong>Keep observing.</strong> Pay attention to patterns in your energy, focus, and comfort over the next few weeks. A journal of "what drained me" and "what helped" can be more revealing than any questionnaire.</li>
+              <li><strong>Come back later.</strong> Your answers may be different under different circumstances. Stress, sleep, health, and life transitions all affect how these traits show up.</li>
+            </ul>
+          </div>
+
+          <p style={{marginTop:'14px',lineHeight:'1.7',fontStyle:'italic',color:'var(--txt3)'}}>
+            The most important thing: you paid attention to your own experience, and you took the time to investigate it.
+            That is not nothing. That is the beginning of understanding yourself better, regardless of what any score says.
+          </p>
+        </div>
+      )}
+
+      <div className="final-box"><h3>{aboveCount>0?'You took a brave step today':'You showed up for yourself today'}</h3><p>{aboveCount>0?'Self-understanding is not a destination; it is an ongoing conversation with yourself. Whatever these results mean to you, please know: your brain is not broken. It may simply work differently from what the world expected, and that difference has real value.':'Taking this assessment was an act of self-care, regardless of the outcome. The curiosity that brought you here is itself a strength. Keep paying attention to your experience, keep asking questions, and trust that your sense of something being worth understanding is reason enough to keep exploring.'}</p></div>
+
+      <div className="btn-row" style={{marginTop:'18px'}}>
+        <button className="btn btn-s" onClick={()=>generatePDF(scores,allFeedback,coOccurrences,resonatedArr)}>📄 Download PDF</button>
+        <button className="btn btn-s" onClick={downloadLLM}>🤖 Export for AI</button>
+        <button className="btn btn-s" onClick={()=>window.print()}>🖨️ Print</button>
+        <button className="btn btn-p" onClick={restart}>Start over</button>
+      </div>
+      <div className="surl">
+        <span style={{fontSize:'.82rem',color:'var(--txt3)',whiteSpace:'nowrap'}}>Bookmark results:</span>
+        <input readOnly value={typeof window!=='undefined'?window.location.origin+window.location.pathname+encodeScoresToHash(scores):''}/>
+        <button className="btn btn-s" style={{padding:'6px 14px',fontSize:'.8rem'}} onClick={()=>{navigator.clipboard.writeText(window.location.origin+window.location.pathname+encodeScoresToHash(scores));setUrlCopied(true);setTimeout(()=>setUrlCopied(false),2000)}}>{urlCopied?'Copied!':'Copy'}</button>
+      </div>
+
+      <div className="refs">
+        <h3>Scientific References</h3>
+        {Object.values(DOMAINS).map(d=><p key={d.label}><strong>{d.source}:</strong> {d.citation}</p>)}
+        <p style={{marginTop:'14px',fontStyle:'italic'}}><strong>Methodology note:</strong> {QUESTIONS.filter(q=>q.consolidated).length} questions score into multiple domains where validated instruments share overlapping constructs. All original instrument scoring is preserved.</p>
+      </div>
+      <div className="credits"><p>Conceived &amp; developed by <a href="https://linkedin.com/in/beingbabu" target="_blank" rel="noopener noreferrer">Babu George</a></p></div>
+      <div className="legal">
+        <p><strong>LEGAL DISCLAIMER:</strong> This instrument is an experimental self-exploration tool designed for adults and provided strictly for informational and educational purposes. It is not suitable for children or young adolescents. It is NOT a medical device, diagnostic instrument, or clinical assessment, and the results do not constitute a medical diagnosis, psychological evaluation, clinical opinion, or professional advice of any kind. This tool is not intended to replace, substitute for, or serve as the basis for any professional consultation, diagnosis, or treatment. No healthcare provider-patient relationship is created through use of this tool.</p>
+        <p style={{marginTop:'6px'}}>The developers, creators, and distributors of this tool (including Babu George) expressly disclaim all liability for any direct, indirect, incidental, consequential, or special damages arising from or related to the use of, reliance upon, or inability to use this tool or its results, to the fullest extent permitted by applicable law. By using this tool, you acknowledge that you do so entirely at your own risk and that you will not rely on its results as a substitute for professional evaluation. If you believe you may have a neurodevelopmental condition, please consult a qualified healthcare professional.</p>
+      </div>
+    </div>);
+  }
+  return null;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
