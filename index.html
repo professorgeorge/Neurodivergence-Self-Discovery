@@ -519,8 +519,19 @@ function generateLLMExport(scores,feedback,resonated){
     md+=`- Encourage them to track patterns in energy, focus, and comfort over time\n\n`;
   }
   if(resonated.length>0){md+=`---\n\n## Questions That Personally Resonated\n\nThe person flagged these specific questions as particularly meaningful to their experience:\n\n`;resonated.forEach(i=>{const q=QUESTIONS[i];md+=`- "${q.text}" (${SECTIONS[q.section].label})\n`});md+=`\nThese "resonance markers" may be especially useful for understanding their lived experience beyond the scores.\n\n`}
-  md+=`---\n\n## Screening Instruments Used\n\n`;D.forEach(d=>{md+=`- **${DOMAINS[d].label}:** ${DOMAINS[d].source} (${DOMAINS[d].maxScore} items, threshold: ${DOMAINS[d].threshold})\n`});
-  md+=`\nNote: 6 questions score into multiple domains where instruments overlap. All instrument scoring is preserved.\n`;
+  md+=`---\n\n## Sources\n\nThe scales were informed by the published sources listed below, along with additional research literature, clinical and educational expertise, and other nonretrievable sources consulted during development.\n\n`;
+  md+=`- Allison, C., Auyeung, B., & Baron-Cohen, S. (2012). Toward brief "red flags" for autism screening. *J. Am. Acad. Child Adolesc. Psychiatry, 51*(2), 202-212.\n`;
+  md+=`- Aron, E. N., & Aron, A. (1997). Sensory-processing sensitivity and its relation to introversion and emotionality. *J. Pers. Soc. Psychol., 73*(2), 345-368.\n`;
+  md+=`- Butterworth, B. (2003). *Dyscalculia screener*. nferNelson.\n`;
+  md+=`- Cipora, K., et al. (2016). Professional mathematicians differ from controls in their spatial-numerical associations. *Psychological Research, 80*, 710-726.\n`;
+  md+=`- Hull, L., et al. (2019). Development and validation of the Camouflaging Autistic Traits Questionnaire (CAT-Q). *J. Autism Dev. Disord., 49*(3), 819-833.\n`;
+  md+=`- Kessler, R. C., et al. (2005). The WHO Adult ADHD Self-Report Scale (ASRS). *Psychological Medicine, 35*(2), 245-256.\n`;
+  md+=`- Kirby, A., et al. (2010). Adult Developmental Co-ordination Disorders/Dyspraxia Checklist (ADC). *Research in Dev. Disabilities, 31*(1), 131-139.\n`;
+  md+=`- Roth, R. M., Isquith, P. K., & Gioia, G. A. (2005). *BRIEF-A*. Psychological Assessment Resources.\n`;
+  md+=`- Smythe, I., & Everatt, J. (2001). Adult checklist. British Dyslexia Association.\n`;
+  md+=`- Vinegrad, M. (1994). A revised adult dyslexia checklist. *Educare*, (48), 21-23.\n`;
+  md+=`- Ward, M. F., Wender, P. H., & Reimherr, F. W. (1993). The Wender Utah Rating Scale. *Am. J. Psychiatry, 150*(6), 885-890.\n`;
+  md+=`\nNote: 6 questions score into multiple domains where instruments overlap.\n`;
   md+=`\n---\n\n## Disclaimer\n\nThis is an experimental self-exploration tool designed for adults, NOT a clinical assessment. Not suitable for children or adolescents. Results do not constitute diagnosis or medical advice.\n\nConceived & developed by Babu George (linkedin.com/in/beingbabu)\n`;
   return md;
 }
@@ -569,11 +580,21 @@ function generatePDF(scores,feedback,coOccurrences,resonated){
   // Resonated questions
   if(resonated.length>0){
     chk(25);doc.setFont('helvetica','bold');doc.setFontSize(11);doc.setTextColor(45,74,62);
-    doc.text('Questions That Resonated With You',m,y);y+=5;
-    doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.setTextColor(100);
-    doc.text('You flagged these items as particularly meaningful to your experience:',m,y);y+=5;
-    doc.setFontSize(8);doc.setTextColor(80,70,65);
-    resonated.forEach(i=>{const q=QUESTIONS[i];chk(6);wrap('♥ '+q.text+' ('+SECTIONS[q.section].label+')',m,u,3.5);y+=2});y+=4;
+    doc.text('Questions That Resonated With You',m,y);y+=6;
+    doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(100);
+    doc.text('You flagged these items as particularly meaningful to your experience:',m,y);y+=6;
+    doc.setFontSize(8.5);doc.setTextColor(80,70,65);
+    resonated.forEach(i=>{
+      const q=QUESTIONS[i];
+      const secLabel=SECTIONS[q.section].label;
+      chk(14);
+      doc.setFont('helvetica','bold');doc.setFontSize(7.5);doc.setTextColor(140,120,100);
+      doc.text(secLabel,m,y);y+=3.5;
+      doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(80,70,65);
+      wrap('- '+q.text,m+3,u-6,3.8);
+      y+=3;
+    });
+    y+=4;
   }
 
   if(coOccurrences.length>0){chk(30);doc.setFont('helvetica','bold');doc.setFontSize(11);doc.setTextColor(45,74,62);doc.text('How Your Traits Interact',m,y);y+=6;coOccurrences.forEach(co=>{chk(18);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(92,64,51);doc.text(co.title,m,y);y+=4;doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(80,70,65);wrap(co.text,m,u,3.5);y+=4});y+=4}
@@ -621,10 +642,27 @@ function generatePDF(scores,feedback,coOccurrences,resonated){
     todos.forEach(t=>{wrap('• '+t,m+2,u-4,3.5);y+=1});y+=4;
   }
 
-  // Instruments
-  chk(40);doc.setFont('helvetica','bold');doc.setFontSize(11);doc.setTextColor(45,74,62);doc.text('Screening Instruments Used',m,y);y+=6;
-  doc.setFontSize(8);doc.setTextColor(80,70,65);
-  D.forEach(domId=>{const d=DOMAINS[domId];chk(6);doc.setFont('helvetica','bold');doc.text(d.label+':',m,y);const lw=doc.getTextWidth(d.label+': ');doc.setFont('helvetica','normal');doc.text(d.source,m+lw,y);y+=4.5});y+=3;
+  // Sources
+  chk(50);doc.setFont('helvetica','bold');doc.setFontSize(11);doc.setTextColor(45,74,62);
+  doc.text('Sources',m,y);y+=6;
+  doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.setTextColor(90,80,70);
+  wrap('The scales were informed by the published sources listed below, along with additional research literature, clinical and educational expertise, and other nonretrievable sources consulted during development.',m,u,3.2);y+=3;
+  const refs=[
+    'Allison, C., Auyeung, B., & Baron-Cohen, S. (2012). Toward brief "red flags" for autism screening: The short Autism Spectrum Quotient and the short Quantitative Checklist in 1,000 cases and 3,000 controls. Journal of the American Academy of Child & Adolescent Psychiatry, 51(2), 202-212.',
+    'Aron, E. N., & Aron, A. (1997). Sensory-processing sensitivity and its relation to introversion and emotionality. Journal of Personality and Social Psychology, 73(2), 345-368.',
+    'Butterworth, B. (2003). Dyscalculia screener. nferNelson.',
+    'Cipora, K., Hohol, M., Nuerk, H.-C., Willmes, K., Brozek, B., Kucharzyk, B., & Necka, E. (2016). Professional mathematicians differ from controls in their spatial-numerical associations. Psychological Research, 80, 710-726.',
+    'Hull, L., Mandy, W., Lai, M.-C., Baron-Cohen, S., Allison, C., Smith, P., & Petrides, K. V. (2019). Development and validation of the Camouflaging Autistic Traits Questionnaire (CAT-Q). Journal of Autism and Developmental Disorders, 49(3), 819-833.',
+    'Kessler, R. C., Adler, L., Ames, M., Demler, O., Faraone, S., Hiripi, E., Howes, M. J., Jin, R., Secnik, K., Spencer, T., Ustun, T. B., & Walters, E. E. (2005). The World Health Organization Adult ADHD Self-Report Scale (ASRS): A short screening scale for use in the general population. Psychological Medicine, 35(2), 245-256.',
+    'Kirby, A., Edwards, L., Sugden, D., & Rosenblum, S. (2010). The development and standardization of the Adult Developmental Co-ordination Disorders/Dyspraxia Checklist (ADC). Research in Developmental Disabilities, 31(1), 131-139.',
+    'Roth, R. M., Isquith, P. K., & Gioia, G. A. (2005). Behavior Rating Inventory of Executive Function, Adult version. Psychological Assessment Resources.',
+    'Smythe, I., & Everatt, J. (2001). Adult checklist. British Dyslexia Association.',
+    'Vinegrad, M. (1994, March). A revised adult dyslexia checklist. Educare, (48), 21-23.',
+    'Ward, M. F., Wender, P. H., & Reimherr, F. W. (1993). The Wender Utah Rating Scale: An aid in the retrospective diagnosis of childhood attention-deficit hyperactivity disorder. American Journal of Psychiatry, 150(6), 885-890.',
+  ];
+  doc.setFontSize(7);doc.setTextColor(100,90,85);
+  refs.forEach(r=>{chk(12);wrap(r,m,u,3);y+=2});
+  y+=3;
   chk(10);doc.setFont('helvetica','italic');doc.setFontSize(7);doc.setTextColor(120,110,100);
   wrap('Methodology note: 6 questions score into multiple domains where instruments share overlapping constructs. All instrument scoring is preserved.',m,u,3);
 
@@ -1101,8 +1139,19 @@ function App(){
       </div>
 
       <div className="refs">
-        <h3>Scientific References</h3>
-        {Object.values(DOMAINS).map(d=><p key={d.label}><strong>{d.source}:</strong> {d.citation}</p>)}
+        <h3>Sources</h3>
+        <p style={{marginBottom:'10px'}}>The scales were informed by the published sources listed below, along with additional research literature, clinical and educational expertise, and other nonretrievable sources consulted during development.</p>
+        <p>Allison, C., Auyeung, B., &amp; Baron-Cohen, S. (2012). Toward brief "red flags" for autism screening: The short Autism Spectrum Quotient and the short Quantitative Checklist in 1,000 cases and 3,000 controls. <em>Journal of the American Academy of Child &amp; Adolescent Psychiatry, 51</em>(2), 202-212.</p>
+        <p>Aron, E. N., &amp; Aron, A. (1997). Sensory-processing sensitivity and its relation to introversion and emotionality. <em>Journal of Personality and Social Psychology, 73</em>(2), 345-368.</p>
+        <p>Butterworth, B. (2003). <em>Dyscalculia screener</em>. nferNelson.</p>
+        <p>Cipora, K., Hohol, M., Nuerk, H.-C., Willmes, K., Bro&#380;ek, B., Kucharzyk, B., &amp; N&#281;cka, E. (2016). Professional mathematicians differ from controls in their spatial-numerical associations. <em>Psychological Research, 80</em>, 710-726.</p>
+        <p>Hull, L., Mandy, W., Lai, M.-C., Baron-Cohen, S., Allison, C., Smith, P., &amp; Petrides, K. V. (2019). Development and validation of the Camouflaging Autistic Traits Questionnaire (CAT-Q). <em>Journal of Autism and Developmental Disorders, 49</em>(3), 819-833.</p>
+        <p>Kessler, R. C., Adler, L., Ames, M., Demler, O., Faraone, S., Hiripi, E., Howes, M. J., Jin, R., Secnik, K., Spencer, T., Ustun, T. B., &amp; Walters, E. E. (2005). The World Health Organization Adult ADHD Self-Report Scale (ASRS): A short screening scale for use in the general population. <em>Psychological Medicine, 35</em>(2), 245-256.</p>
+        <p>Kirby, A., Edwards, L., Sugden, D., &amp; Rosenblum, S. (2010). The development and standardization of the Adult Developmental Co-ordination Disorders/Dyspraxia Checklist (ADC). <em>Research in Developmental Disabilities, 31</em>(1), 131-139.</p>
+        <p>Roth, R. M., Isquith, P. K., &amp; Gioia, G. A. (2005). <em>Behavior Rating Inventory of Executive Function, Adult version</em>. Psychological Assessment Resources.</p>
+        <p>Smythe, I., &amp; Everatt, J. (2001). Adult checklist. British Dyslexia Association.</p>
+        <p>Vinegrad, M. (1994, March). A revised adult dyslexia checklist. <em>Educare</em>, (48), 21-23.</p>
+        <p>Ward, M. F., Wender, P. H., &amp; Reimherr, F. W. (1993). The Wender Utah Rating Scale: An aid in the retrospective diagnosis of childhood attention-deficit hyperactivity disorder. <em>American Journal of Psychiatry, 150</em>(6), 885-890.</p>
         <p style={{marginTop:'14px',fontStyle:'italic'}}><strong>Methodology note:</strong> {QUESTIONS.filter(q=>q.consolidated).length} questions score into multiple domains where validated instruments share overlapping constructs. All original instrument scoring is preserved.</p>
       </div>
       <div className="credits"><p>Conceived &amp; developed by <a href="https://linkedin.com/in/beingbabu" target="_blank" rel="noopener noreferrer">Babu George</a></p></div>
